@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Rizki Doli & Sri Raudhoh Ikky</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-pink: #ff6b9d;
+            --secondary-pink: #ffa8c5;
+            --light-pink: #ffe6ef;
+            --gold: #d4af37;
+            --dark-gold: #b8941f;
+            --light-bg: #fff9fb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: #555;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 20%);
+        }
+        
+        .font-script {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .font-elegant {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Animasi Background Cover */
+        .cover-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa8c5 100%);
+        }
+        
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 0.5;
+            }
+        }
+        
+        /* Animasi Bunga Sakura */
+        .sakura {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z' /%3E%3C/svg%3E");
+            background-size: contain;
+            opacity: 0.7;
+            animation: sakura-fall linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes sakura-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        
+        /* Animasi Kristal */
+        .crystal {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: white;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            opacity: 0;
+            animation: crystal-float 15s infinite linear;
+            z-index: 1;
+        }
+        
+        @keyframes crystal-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        /* Animasi Blink */
+        .blink {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            animation: blink-effect 4s infinite;
+            z-index: 1;
+        }
+        
+        @keyframes blink-effect {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+        }
+        
+        /* Cover Styles */
+        .cover-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), opacity 1s ease;
+        }
+        
+        .cover-content {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 90%;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .monogram {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: pulse 3s infinite, rotate 20s infinite linear;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .monogram::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(255,255,255,0.3), transparent 30%);
+            animation: rotate 4s linear infinite;
+        }
+        
+        .monogram-inner {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            position: relative;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .cover-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            animation: title-float 6s ease-in-out infinite;
+        }
+        
+        @keyframes title-float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .cover-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: subtitle-fade 3s ease-in-out infinite;
+        }
+        
+        @keyframes subtitle-fade {
+            0%, 100% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        .guest-name {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: guest-pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes guest-pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+        
+        .open-btn {
+            background: white;
+            color: var(--primary-pink);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+        
+        .open-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .open-btn:hover::before {
+            left: 100%;
+        }
+        
+        .open-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            opacity: 0;
+            transition: opacity 1s ease;
+            padding-top: 2rem;
+        }
+        
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--gold));
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-pink);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--gold));
+            border-radius: 3px;
+        }
+        
+        /* Couple Section */
+        .couple-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .couple-card {
+            text-align: center;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+        }
+        
+        .photo-frame {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            padding: 8px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--gold));
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            animation: photo-float 6s ease-in-out infinite;
+        }
+        
+        @keyframes photo-float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .couple-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+        }
+        
+        .couple-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #444;
+        }
+        
+        .couple-desc {
+            color: #777;
+            font-size: 0.95rem;
+        }
+        
+        .heart-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .heart-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+            animation: heartbeat 2s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        /* Event Section */
+        .event-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .event-card {
+            flex: 1;
+            min-width: 280px;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--primary-pink);
+            transition: all 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            background: var(--light-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+        }
+        
+        .event-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+        
+        .event-details {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Countdown Section */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem 1rem;
+            min-width: 100px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            margin-bottom: 0.5rem;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* RSVP Section */
+        .rsvp-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+        }
+        
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 90;
+            transition: all 0.3s ease;
+        }
+        
+        .music-player:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .music-icon {
+            color: var(--primary-pink);
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--secondary-pink) 100%);
+            color: white;
+            margin-top: 3rem;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .footer-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-text {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .signature {
+            font-size: 2rem;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cover-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-card {
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .couple-container, .event-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .countdown-container {
+                gap: 1rem;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+                padding: 1rem 0.5rem;
+            }
+            
+            .countdown-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation Cover -->
+    <div class="cover-bg" id="cover-bg"></div>
+    
+    <!-- Animasi Bunga Sakura -->
+    <div id="sakura-container"></div>
+    
+    <!-- Animasi Kristal -->
+    <div id="crystal-container"></div>
+    
+    <!-- Animasi Blink -->
+    <div id="blink-container"></div>
+    
+    <!-- Cover Section -->
+    <div class="cover-container" id="cover">
+        <div class="cover-content">
+            <div class="monogram">
+                <div class="monogram-inner">
+                    <span class="font-script" style="font-size: 3.5rem; color: white;">R&S</span>
+                </div>
+            </div>
+            <p class="cover-subtitle">The Wedding of</p>
+            <h1 class="cover-title font-script">Rizki Doli & Sri Raudhoh</h1>
+            
+            <div class="guest-name">
+                <p>Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+                <p class="font-elegant" style="font-size: 1.3rem; margin-top: 0.5rem;">[Nama Tamu Undangan]</p>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.8;">(Mohon maaf bila ada kesalahan penulisan nama/gelar)</p>
+            </div>
+            
+            <button class="open-btn" id="open-button">
+                <i class="fa-solid fa-envelope-open mr-2"></i> Buka Undangan
+            </button>
+        </div>
+    </div>
+    
+    <!-- Music Player -->
+    <audio id="bg-music" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-dreams-17.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="music-player" id="music-button">
+        <i class="fa-solid fa-play music-icon" id="music-icon"></i>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <div class="content-section">
+            <!-- Opening Section -->
+            <div class="section-card" data-aos="fade-up">
+                <p class="text-center text-2xl mb-6" style="color: var(--primary-pink);">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+                <p class="text-center text-lg italic mb-6">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+                </p>
+                <p class="text-center font-bold">(QS. Ar-Rum: 21)</p>
+                
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <p class="text-center text-xl mb-2" style="direction: rtl; font-family: 'Times New Roman', serif;">مَا رَأَيْتُ لِلْمُتَحَابَّيْنِ مِثْلَ النِّكَاحِ</p>
+                    <p class="text-center italic">Artinya: "Tidak pernah kulihat bagi dua orang yang saling mencintai semisal (cinta dalam) pernikahan."</p>
+                    <p class="text-center font-bold mt-1">(HR Baihaqi)</p>
+                </div>
+            </div>
+            
+            <!-- Couple Section -->
+            <div class="section-card" data-aos="fade-up">
+                <h2 class="section-title font-script">Mempelai</h2>
+                
+                <div class="couple-container">
+                    <div class="couple-card" data-aos="fade-right">
+                        <div class="photo-frame">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Mempelai Pria" class="couple-photo">
+                        </div>
+                        <h3 class="couple-name font-script">Rizki Doli Harahap</h3>
+                        <p class="couple-desc">Putra dari Bapak [Nama Ayah]</p>
+                        <p class="couple-desc">& Ibu [Nama Ibu]</p>
+                    </div>
+                    
+                    <div class="heart-connector">
+                        <div class="heart-icon">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="couple-card" data-aos="fade-left">
+                        <div class="photo-frame">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Mempelai Wanita" class="couple-photo">
+                        </div>
+                        <h3 class="couple-name font-script">Sri Raudhoh Ikky Mr Ritonga</h3>
+                        <p class="couple-desc">Putri dari Bapak [Nama Ayah]</p>
+                        <p class="couple-desc">& Ibu [Nama Ibu]</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event Section -->
+            <div class="section-card" data-aos="fade-up">
+                <h2 class="section-title font-script">Save The Date</h2>
+                
+                <div class="event-container">
+                    <div class="event-card" data-aos="zoom-in">
+                        <div class="event-icon">
+                            <i class="fa-solid fa-mosque"></i>
+                        </div>
+                        <h3 class="event-title font-script">Akad Nikah</h3>
+                        <p class="event-details font-bold">SABTU, 10 AGUSTUS 2024</p>
+                        <p class="event-details"><i class="fa-solid fa-clock mr-2"></i> 09:00 WIB - Selesai</p>
+                        <p class="event-details"><i class="fa-solid fa-map-marker-alt mr-2"></i> [Lokasi Akad Nikah]</p>
+                        <p class="event-details text-sm mt-2">[Alamat Lengkap Lokasi Akad]</p>
+                    </div>
+                    
+                    <div class="event-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="event-icon">
+                            <i class="fa-solid fa-champagne-glasses"></i>
+                        </div>
+                        <h3 class="event-title font-script">Resepsi</h3>
+                        <p class="event-details font-bold">SABTU, 10 AGUSTUS 2024</p>
+                        <p class="event-details"><i class="fa-solid fa-clock mr-2"></i> 19:00 WIB - Selesai</p>
+                        <p class="event-details"><i class="fa-solid fa-map-marker-alt mr-2"></i> [Lokasi Resepsi]</p>
+                        <p class="event-details text-sm mt-2">[Alamat Lengkap Lokasi Resepsi]</p>
+                    </div>
+                </div>
+                
+                <!-- Countdown -->
+                <div class="countdown-container" data-aos="fade-up">
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="days">00</div>
+                        <div class="countdown-label">Hari</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="hours">00</div>
+                        <div class="countdown-label">Jam</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="minutes">00</div>
+                        <div class="countdown-label">Menit</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="seconds">00</div>
+                        <div class="countdown-label">Detik</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RSVP Section -->
+            <div class="section-card" data-aos="fade-up">
+                <h2 class="section-title font-script">Kirim Ucapan</h2>
+                
+                <form class="rsvp-form" id="rsvp-form">
+                    <div class="form-group">
+                        <label class="form-label" for="nama">Nama Anda</label>
+                        <input type="text" id="nama" class="form-input" placeholder="Tulis nama Anda...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="kehadiran">Konfirmasi Kehadiran</label>
+                        <select id="kehadiran" class="form-select">
+                            <option>Hadir</option>
+                            <option>Tidak Hadir</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="ucapan">Ucapan & Doa</label>
+                        <textarea id="ucapan" class="form-textarea" rows="4" placeholder="Tulis ucapan dan doa Anda..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Kirim Ucapan
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer" data-aos="fade-up">
+            <h2 class="footer-title font-script">Terima Kasih</h2>
+            <p class="footer-text">
+                Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
+            </p>
+            <p class="footer-text">
+                Atas kehadiran dan doa restunya, kami ucapkan terima kasih.
+            </p>
+            
+            <h3 class="signature font-script">Rizki Doli & Sri Raudhoh</h3>
+        </div>
+    </main>
+
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Inisialisasi AOS
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 100
+        });
+
+        // --- Logika untuk Tombol Buka Undangan ---
+        const cover = document.getElementById('cover');
+        const mainContent = document.getElementById('main-content');
+        const openButton = document.getElementById('open-button');
+        const bgMusic = document.getElementById('bg-music');
+        const musicButton = document.getElementById('music-button');
+        const musicIcon = document.getElementById('music-icon');
+
+        openButton.addEventListener('click', () => {
+            // 1. Sembunyikan cover dengan efek animasi
+            cover.style.transform = 'translateY(-100%)';
+            cover.style.opacity = '0';
+            
+            setTimeout(() => {
+                cover.style.display = 'none';
+            }, 1500);
+
+            // 2. Tampilkan konten utama
+            setTimeout(() => {
+                mainContent.style.opacity = '1';
+            }, 500);
+            
+            // 3. Putar musik
+            bgMusic.play().catch(e => console.log("Autoplay ditolak oleh browser."));
+            musicIcon.classList.remove('fa-play');
+            musicIcon.classList.add('fa-pause');
+
+            // 4. Re-inisialisasi AOS setelah konten utama tampil
+            setTimeout(() => {
+                AOS.refresh();
+            }, 500);
+        });
+
+        // --- Logika untuk Tombol Musik ---
+        let isPlaying = false;
+        musicButton.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-play');
+            } else {
+                bgMusic.play().catch(e => console.log("Autoplay ditolak oleh browser."));
+                musicIcon.classList.remove('fa-play');
+                musicIcon.classList.add('fa-pause');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // --- Logika untuk Countdown Timer ---
+        const countdownDate = new Date(2024, 7, 10).getTime(); // 10 Agustus 2024
+
+        const countdownFunction = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            // Perhitungan waktu
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Tampilkan di HTML
+            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+
+            // Jika waktu habis
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById('countdown').innerHTML = "<p class='text-xl text-center' style='color: var(--primary-pink);'>Acara Telah Berlangsung</p>";
+            }
+        }, 1000);
+
+        // --- Logika untuk Background Animation ---
+        const coverBg = document.getElementById('cover-bg');
+        
+        for (let i = 0; i < 15; i++) {
+            const element = document.createElement('div');
+            element.classList.add('floating-element');
+            
+            // Ukuran acak
+            const size = Math.random() * 100 + 50;
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            
+            // Posisi acak
+            element.style.left = `${Math.random() * 100}%`;
+            element.style.top = `${Math.random() * 100}%`;
+            
+            // Delay animasi acak
+            element.style.animationDelay = `${Math.random() * 20}s`;
+            
+            // Durasi animasi acak
+            element.style.animationDuration = `${Math.random() * 10 + 15}s`;
+            
+            coverBg.appendChild(element);
+        }
+
+        // --- Logika untuk Bunga Sakura ---
+        const sakuraContainer = document.getElementById('sakura-container');
+        
+        function createSakura() {
+            const sakura = document.createElement('div');
+            sakura.classList.add('sakura');
+            
+            // Posisi horizontal acak
+            sakura.style.left = `${Math.random() * 100}%`;
+            
+            // Ukuran acak
+            const size = Math.random() * 15 + 10;
+            sakura.style.width = `${size}px`;
+            sakura.style.height = `${size}px`;
+            
+            // Durasi animasi acak
+            const duration = Math.random() * 10 + 10;
+            sakura.style.animationDuration = `${duration}s`;
+            
+            // Delay animasi acak
+            sakura.style.animationDelay = `${Math.random() * 5}s`;
+            
+            sakuraContainer.appendChild(sakura);
+            
+            // Hapus elemen setelah animasi selesai
+            setTimeout(() => {
+                sakura.remove();
+            }, duration * 1000);
+        }
+        
+        // Buat sakura secara berkala
+        setInterval(createSakura, 300);
+        
+        // Buat beberapa sakura di awal
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createSakura, i * 200);
+        }
+
+        // --- Logika untuk Kristal ---
+        const crystalContainer = document.getElementById('crystal-container');
+        
+        function createCrystal() {
+            const crystal = document.createElement('div');
+            crystal.classList.add('crystal');
+            
+            // Posisi horizontal acak
+            crystal.style.left = `${Math.random() * 100}%`;
+            
+            // Ukuran acak
+            const size = Math.random() * 10 + 5;
+            crystal.style.width = `${size}px`;
+            crystal.style.height = `${size}px`;
+            
+            // Durasi animasi acak
+            const duration = Math.random() * 10 + 10;
+            crystal.style.animationDuration = `${duration}s`;
+            
+            // Delay animasi acak
+            crystal.style.animationDelay = `${Math.random() * 5}s`;
+            
+            crystalContainer.appendChild(crystal);
+            
+            // Hapus elemen setelah animasi selesai
+            setTimeout(() => {
+                crystal.remove();
+            }, duration * 1000);
+        }
+        
+        // Buat kristal secara berkala
+        setInterval(createCrystal, 500);
+        
+        // Buat beberapa kristal di awal
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createCrystal, i * 300);
+        }
+
+        // --- Logika untuk Blink Effect ---
+        const blinkContainer = document.getElementById('blink-container');
+        
+        function createBlink() {
+            const blink = document.createElement('div');
+            blink.classList.add('blink');
+            
+            // Posisi acak
+            blink.style.left = `${Math.random() * 100}%`;
+            blink.style.top = `${Math.random() * 100}%`;
+            
+            // Ukuran acak
+            const size = Math.random() * 100 + 50;
+            blink.style.width = `${size}px`;
+            blink.style.height = `${size}px`;
+            
+            // Delay animasi acak
+            blink.style.animationDelay = `${Math.random() * 4}s`;
+            
+            blinkContainer.appendChild(blink);
+            
+            // Hapus elemen setelah animasi selesai
+            setTimeout(() => {
+                blink.remove();
+            }, 4000);
+        }
+        
+        // Buat blink secara berkala
+        setInterval(createBlink, 1000);
+        
+        // Buat beberapa blink di awal
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createBlink, i * 500);
+        }
+
+        // --- Logika untuk Form RSVP ---
+        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Di aplikasi nyata, ini akan mengirim data ke server
+            // Untuk demo, kita hanya menampilkan alert
+            alert('Terima kasih atas ucapan dan konfirmasi kehadiran Anda!');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
