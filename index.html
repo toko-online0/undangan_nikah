@@ -65,6 +65,84 @@
             background: linear-gradient(135deg, #ff6b9d 0%, #ffa8c5 100%);
         }
         
+        /* Animasi Bintang yang Lebih Halus */
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Animasi Bunga Sakura */
+        .sakura {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z' /%3E%3C/svg%3E");
+            background-size: contain;
+            opacity: 0.7;
+            animation: sakura-fall linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes sakura-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Animasi Daun */
+        .leaf {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23a5d6a7' d='M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z' /%3E%3C/svg%3E");
+            background-size: contain;
+            opacity: 0.7;
+            animation: leaf-fall linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes leaf-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Floating Elements */
         .floating-element {
             position: absolute;
             border-radius: 50%;
@@ -84,53 +162,6 @@
             100% {
                 transform: translateY(0) rotate(360deg);
                 opacity: 0.5;
-            }
-        }
-        
-        /* Animasi Bunga Sakura */
-        .sakura {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z' /%3E%3C/svg%3E");
-            background-size: contain;
-            opacity: 0.7;
-            animation: sakura-fall linear infinite;
-            z-index: 1;
-        }
-        
-        @keyframes sakura-fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-        
-        /* Animasi Kristal */
-        .crystal {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background: white;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            opacity: 0;
-            animation: crystal-float 15s infinite linear;
-            z-index: 1;
-        }
-        
-        @keyframes crystal-float {
-            0% {
-                transform: translateY(100vh) rotate(0deg) scale(0.5);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg) scale(1);
-                opacity: 0;
             }
         }
         
@@ -800,6 +831,80 @@
             margin-top: 2rem;
         }
         
+        /* Tutorial Section */
+        .tutorial-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .tutorial-step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .tutorial-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-pink);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #444;
+        }
+        
+        .step-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--primary-pink);
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            z-index: 80;
+            display: none;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .cover-title {
@@ -814,7 +919,7 @@
                 font-size: 2rem;
             }
             
-            .couple-container, .event-container {
+            .couple-container, .event-container, .tutorial-container {
                 flex-direction: column;
                 align-items: center;
             }
@@ -838,14 +943,22 @@
     <!-- Background Animation Cover -->
     <div class="cover-bg" id="cover-bg"></div>
     
+    <!-- Animasi Bintang -->
+    <div id="star-container"></div>
+    
     <!-- Animasi Bunga Sakura -->
     <div id="sakura-container"></div>
     
-    <!-- Animasi Kristal -->
-    <div id="crystal-container"></div>
+    <!-- Animasi Daun -->
+    <div id="leaf-container"></div>
     
     <!-- Animasi Blink -->
     <div id="blink-container"></div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scroll-indicator">
+        <i class="fa-solid fa-chevron-down"></i>
+    </div>
     
     <!-- Cover Section -->
     <div class="cover-container" id="cover">
@@ -860,19 +973,26 @@
             
             <div class="guest-name">
                 <p>Kepada Yth. Bapak/Ibu/Saudara/i:</p>
-                <p class="font-elegant" style="font-size: 1.3rem; margin-top: 0.5rem;">[Nama Tamu Undangan]</p>
+                <p class="font-elegant" style="font-size: 1.3rem; margin-top: 0.5rem;" id="guest-name-display">[Nama Tamu Undangan]</p>
                 <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.8;">(Mohon maaf bila ada kesalahan penulisan nama/gelar)</p>
             </div>
             
             <button class="open-btn" id="open-button">
                 <i class="fa-solid fa-envelope-open mr-2"></i> Buka Undangan
             </button>
+            
+            <!-- Petunjuk di Cover -->
+            <div class="mt-8 text-white text-sm opacity-80">
+                <p><i class="fa-solid fa-arrow-pointer mr-2"></i> Klik tombol "Buka Undangan" untuk melanjutkan</p>
+            </div>
         </div>
     </div>
     
     <!-- Music Player -->
     <audio id="bg-music" loop>
+        <!-- Ganti dengan URL lagu yang Anda inginkan -->
         <source src="https://assets.mixkit.co/music/preview/mixkit-happy-dreams-17.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
     </audio>
     
     <div class="music-player" id="music-button">
@@ -894,6 +1014,45 @@
                     <p class="text-center text-xl mb-2" style="direction: rtl; font-family: 'Times New Roman', serif;">مَا رَأَيْتُ لِلْمُتَحَابَّيْنِ مِثْلَ النِّكَاحِ</p>
                     <p class="text-center italic">Artinya: "Tidak pernah kulihat bagi dua orang yang saling mencintai semisal (cinta dalam) pernikahan."</p>
                     <p class="text-center font-bold mt-1">(HR Baihaqi)</p>
+                </div>
+                
+                <!-- Petunjuk di Konten Utama -->
+                <div class="mt-8 p-4 bg-var(--light-pink) rounded-lg text-center">
+                    <p class="font-bold text-var(--primary-pink) mb-2">Petunjuk Penggunaan:</p>
+                    <p><i class="fa-solid fa-computer-mouse mr-2"></i> Scroll ke bawah untuk melihat informasi lengkap</p>
+                    <p><i class="fa-solid fa-music mr-2"></i> Klik ikon musik di kanan bawah untuk mengontrol suara</p>
+                    <p><i class="fa-solid fa-reply mr-2"></i> Isi form konfirmasi kehadiran di bagian bawah</p>
+                </div>
+            </div>
+            
+            <!-- Tutorial Section -->
+            <div class="section-card" data-aos="fade-up">
+                <h2 class="section-title font-script">Cara Menggunakan Undangan</h2>
+                
+                <div class="tutorial-container">
+                    <div class="tutorial-step" data-aos="zoom-in">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Buka Undangan</h3>
+                        <p class="step-desc">Klik tombol "Buka Undangan" di halaman awal untuk melihat isi lengkap undangan</p>
+                    </div>
+                    
+                    <div class="tutorial-step" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Scroll/Desak</h3>
+                        <p class="step-desc">Gunakan scroll mouse atau desak layar ke bawah untuk melihat semua bagian undangan</p>
+                    </div>
+                    
+                    <div class="tutorial-step" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Konfirmasi Kehadiran</h3>
+                        <p class="step-desc">Isi form konfirmasi kehadiran untuk memberi tahu apakah Anda bisa hadir</p>
+                    </div>
+                    
+                    <div class="tutorial-step" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Kirim Ucapan</h3>
+                        <p class="step-desc">Tulis pesan dan doa untuk mempelai melalui form ucapan</p>
+                    </div>
                 </div>
             </div>
             
@@ -930,34 +1089,38 @@
             
             <!-- Event Section -->
             <div class="section-card" data-aos="fade-up">
-                <h2 class="section-title font-script">Save The Date</h2>
+                <h2 class="section-title font-script">Acara</h2>
                 
                 <div class="event-container">
-                    <div class="event-card" data-aos="zoom-in">
+                    <div class="event-card" data-aos="flip-left">
                         <div class="event-icon">
                             <i class="fa-solid fa-mosque"></i>
                         </div>
-                        <h3 class="event-title font-script">Akad Nikah</h3>
-                        <p class="event-details font-bold">SABTU, 10 AGUSTUS 2024</p>
-                        <p class="event-details"><i class="fa-solid fa-clock mr-2"></i> 09:00 WIB - Selesai</p>
-                        <p class="event-details"><i class="fa-solid fa-map-marker-alt mr-2"></i> [Lokasi Akad Nikah]</p>
-                        <p class="event-details text-sm mt-2">[Alamat Lengkap Lokasi Akad]</p>
+                        <h3 class="event-title">Akad Nikah</h3>
+                        <p class="event-details"><i class="fa-solid fa-calendar-days mr-2"></i> Sabtu, 15 Juni 2024</p>
+                        <p class="event-details"><i class="fa-solid fa-clock mr-2"></i> 08.00 - 10.00 WIB</p>
+                        <p class="event-details"><i class="fa-solid fa-location-dot mr-2"></i> Masjid Al-Mubarak</p>
+                        <p class="event-details">Jl. Merdeka No. 123, Medan</p>
                     </div>
                     
-                    <div class="event-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="event-card" data-aos="flip-right">
                         <div class="event-icon">
                             <i class="fa-solid fa-champagne-glasses"></i>
                         </div>
-                        <h3 class="event-title font-script">Resepsi</h3>
-                        <p class="event-details font-bold">SABTU, 10 AGUSTUS 2024</p>
-                        <p class="event-details"><i class="fa-solid fa-clock mr-2"></i> 19:00 WIB - Selesai</p>
-                        <p class="event-details"><i class="fa-solid fa-map-marker-alt mr-2"></i> [Lokasi Resepsi]</p>
-                        <p class="event-details text-sm mt-2">[Alamat Lengkap Lokasi Resepsi]</p>
+                        <h3 class="event-title">Resepsi</h3>
+                        <p class="event-details"><i class="fa-solid fa-calendar-days mr-2"></i> Sabtu, 15 Juni 2024</p>
+                        <p class="event-details"><i class="fa-solid fa-clock mr-2"></i> 11.00 - 14.00 WIB</p>
+                        <p class="event-details"><i class="fa-solid fa-location-dot mr-2"></i> Ballroom Hotel Grand Palace</p>
+                        <p class="event-details">Jl. Gatot Subroto No. 456, Medan</p>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Countdown Section -->
+            <div class="section-card" data-aos="fade-up">
+                <h2 class="section-title font-script">Hitung Mundur</h2>
                 
-                <!-- Countdown -->
-                <div class="countdown-container" data-aos="fade-up">
+                <div class="countdown-container" id="countdown">
                     <div class="countdown-item">
                         <div class="countdown-value" id="days">00</div>
                         <div class="countdown-label">Hari</div>
@@ -975,41 +1138,68 @@
                         <div class="countdown-label">Detik</div>
                     </div>
                 </div>
+                
+                <!-- Counter Hitung Hari -->
+                <div class="mt-8 pt-6 border-t border-gray-200" data-aos="fade-up">
+                    <h3 class="text-center text-xl mb-4" style="color: var(--primary-pink);">Hitung Hari Menuju Pernikahan</h3>
+                    <div class="text-center text-4xl font-bold" id="days-counter" style="color: var(--gold);">0</div>
+                    <p class="text-center mt-2">Hari</p>
+                </div>
             </div>
             
-            <!-- Attendance Section -->
+            <!-- RSVP Section -->
             <div class="section-card" data-aos="fade-up">
                 <h2 class="section-title font-script">Konfirmasi Kehadiran</h2>
                 
-                <div class="attendance-container">
-                    <form class="rsvp-form" id="attendance-form">
+                <div class="rsvp-form">
+                    <form id="rsvp-form">
                         <div class="form-group">
-                            <label class="form-label" for="attendance-name">Nama Lengkap</label>
-                            <input type="text" id="attendance-name" class="form-input" placeholder="Masukkan nama lengkap Anda" required>
+                            <label class="form-label">Nama Lengkap *</label>
+                            <input type="text" class="form-input" id="guest-name" placeholder="Masukkan nama lengkap" required>
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label" for="attendance-presence">Konfirmasi Kehadiran</label>
-                            <select id="attendance-presence" class="form-select" required>
-                                <option value="">Pilih konfirmasi</option>
-                                <option value="hadir">Hadir</option>
-                                <option value="tidak-hadir">Tidak Hadir</option>
+                            <label class="form-label">Jumlah Kehadiran *</label>
+                            <select class="form-select" id="guest-count" required>
+                                <option value="" disabled selected>Pilih jumlah kehadiran</option>
+                                <option value="1">1 Orang</option>
+                                <option value="2">2 Orang</option>
+                                <option value="3">3 Orang</option>
+                                <option value="4">4 Orang</option>
+                                <option value="5">5 Orang atau lebih</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label" for="attendance-message">Pesan (Opsional)</label>
-                            <textarea id="attendance-message" class="form-textarea" rows="3" placeholder="Tulis pesan atau doa untuk mempelai..."></textarea>
+                            <label class="form-label">Konfirmasi Kehadiran *</label>
+                            <select class="form-select" id="attendance-status" required>
+                                <option value="" disabled selected>Konfirmasi kehadiran Anda</option>
+                                <option value="hadir">Hadir</option>
+                                <option value="tidak-hadir">Tidak Hadir</option>
+                                <option value="ragu-ragu">Masih Ragu-Ragu</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Ucapan & Doa</label>
+                            <textarea class="form-textarea" id="guest-message" rows="4" placeholder="Tuliskan ucapan dan doa untuk mempelai..."></textarea>
                         </div>
                         
                         <button type="submit" class="submit-btn">
-                            <i class="fa-solid fa-check-circle mr-2"></i> Konfirmasi Kehadiran
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Kirim Konfirmasi
                         </button>
                     </form>
-                    
+                </div>
+            </div>
+            
+            <!-- Attendance List Section -->
+            <div class="section-card" data-aos="fade-up">
+                <h2 class="section-title font-script">Daftar Konfirmasi</h2>
+                
+                <div class="attendance-container">
                     <div class="attendance-list" id="attendance-list">
-                        <h3 class="text-center text-xl font-bold mb-4" style="color: var(--primary-pink);">Daftar Konfirmasi</h3>
-                        <!-- Daftar konfirmasi akan ditampilkan di sini -->
+                        <!-- Daftar konfirmasi akan dimuat di sini -->
+                        <div class="text-center py-4 text-gray-500">Belum ada konfirmasi kehadiran</div>
                     </div>
                 </div>
             </div>
@@ -1019,388 +1209,513 @@
                 <h2 class="section-title font-script">Kirim Hadiah</h2>
                 
                 <div class="gift-container">
-                    <p class="text-center text-lg mb-6">
-                        Doa dan restu Anda merupakan hadiah terindah bagi kami. Namun jika berkenan memberikan tanda kasih, 
-                        kami dengan senang hati menerimanya melalui:
-                    </p>
+                    <p class="text-center mb-6">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan tanda kasih, Anda dapat melakukannya melalui:</p>
                     
                     <div class="qris-code">
-                        <!-- Ganti dengan QRIS asli Anda -->
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://example.com/qris-payment" alt="QRIS Payment">
+                        <!-- Ganti dengan QRIS yang sesuai -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://example.com" alt="QR Code">
                     </div>
-                    
-                    <p class="text-center mb-4 font-bold">Atau transfer ke rekening berikut:</p>
                     
                     <div class="bank-info">
+                        <h3 class="text-center mb-4" style="color: var(--primary-pink);">Transfer Bank</h3>
+                        
                         <div class="bank-item">
                             <span>Bank BCA</span>
-                            <span class="font-bold">123 456 7890</span>
+                            <span>1234567890</span>
                         </div>
                         <div class="bank-item">
                             <span>a.n.</span>
-                            <span class="font-bold">Rizki Doli Harahap</span>
+                            <span>Rizki Doli Harahap</span>
                         </div>
-                        <div class="bank-item">
+                        
+                        <div class="bank-item mt-4">
                             <span>Bank Mandiri</span>
-                            <span class="font-bold">098 765 4321</span>
+                            <span>0987654321</span>
                         </div>
                         <div class="bank-item">
                             <span>a.n.</span>
-                            <span class="font-bold">Sri Raudhoh Ikky Mr Ritonga</span>
+                            <span>Sri Raudhoh Ikky Mr Ritonga</span>
                         </div>
                     </div>
                     
-                    <p class="text-center text-sm text-gray-600 mb-4">
-                        Setelah melakukan transfer, mohon konfirmasi melalui WhatsApp dengan menekan tombol di bawah:
-                    </p>
-                    
-                    <button class="whatsapp-btn" id="whatsapp-btn">
-                        <i class="fab fa-whatsapp mr-2"></i> Konfirmasi via WhatsApp
+                    <button class="whatsapp-btn" id="whatsapp-confirm">
+                        <i class="fa-brands fa-whatsapp mr-2"></i> Konfirmasi via WhatsApp
                     </button>
                 </div>
             </div>
             
-            <!-- RSVP Section -->
+            <!-- Location Section -->
             <div class="section-card" data-aos="fade-up">
-                <h2 class="section-title font-script">Kirim Ucapan</h2>
+                <h2 class="section-title font-script">Lokasi Acara</h2>
                 
-                <form class="rsvp-form" id="rsvp-form">
-                    <div class="form-group">
-                        <label class="form-label" for="nama">Nama Anda</label>
-                        <input type="text" id="nama" class="form-input" placeholder="Tulis nama Anda...">
+                <div class="event-container">
+                    <div class="event-card">
+                        <div class="event-icon">
+                            <i class="fa-solid fa-mosque"></i>
+                        </div>
+                        <h3 class="event-title">Akad Nikah</h3>
+                        <p class="event-details">Masjid Al-Mubarak</p>
+                        <p class="event-details">Jl. Merdeka No. 123, Medan</p>
+                        <div class="mt-4">
+                            <a href="https://maps.google.com/?q=Masjid+Al-Mubarak+Medan" target="_blank" class="submit-btn" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">
+                                <i class="fa-solid fa-map-location-dot mr-2"></i> Buka di Google Maps
+                            </a>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label class="form-label" for="ucapan">Ucapan & Doa</label>
-                        <textarea id="ucapan" class="form-textarea" rows="4" placeholder="Tulis ucapan dan doa Anda..."></textarea>
+                    <div class="event-card">
+                        <div class="event-icon">
+                            <i class="fa-solid fa-champagne-glasses"></i>
+                        </div>
+                        <h3 class="event-title">Resepsi</h3>
+                        <p class="event-details">Ballroom Hotel Grand Palace</p>
+                        <p class="event-details">Jl. Gatot Subroto No. 456, Medan</p>
+                        <div class="mt-4">
+                            <a href="https://maps.google.com/?q=Hotel+Grand+Palace+Medan" target="_blank" class="submit-btn" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">
+                                <i class="fa-solid fa-map-location-dot mr-2"></i> Buka di Google Maps
+                            </a>
+                        </div>
                     </div>
-                    
-                    <button type="submit" class="submit-btn">
-                        <i class="fa-solid fa-paper-plane mr-2"></i> Kirim Ucapan
-                    </button>
-                </form>
+                </div>
             </div>
         </div>
         
         <!-- Footer -->
-        <div class="footer" data-aos="fade-up">
+        <div class="footer">
             <h2 class="footer-title font-script">Terima Kasih</h2>
             <p class="footer-text">
-                Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
+                Atas kehadiran, doa, dan restu yang diberikan, kami mengucapkan terima kasih yang sebesar-besarnya. Semoga Allah SWT membalas semua kebaikan Bapak/Ibu/Saudara/i sekalian.
             </p>
-            <p class="footer-text">
-                Atas kehadiran dan doa restunya, kami ucapkan terima kasih.
-            </p>
-            
-            <h3 class="signature font-script">Rizki Doli & Sri Raudhoh</h3>
+            <p class="signature font-script">Rizki & Sri</p>
         </div>
     </main>
-
-    <!-- AOS (Animate On Scroll) JS -->
+    
+    <!-- AOS Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+    
     <script>
         // Inisialisasi AOS
         AOS.init({
             duration: 1000,
-            once: false,
+            once: true,
             offset: 100
         });
-
-        // Data untuk menyimpan konfirmasi kehadiran
-        let attendanceData = JSON.parse(localStorage.getItem('weddingAttendance')) || [];
-
-        // --- Logika untuk Tombol Buka Undangan ---
-        const cover = document.getElementById('cover');
-        const mainContent = document.getElementById('main-content');
-        const openButton = document.getElementById('open-button');
-        const bgMusic = document.getElementById('bg-music');
-        const musicButton = document.getElementById('music-button');
-        const musicIcon = document.getElementById('music-icon');
-
-        openButton.addEventListener('click', () => {
-            // 1. Sembunyikan cover dengan efek animasi
-            cover.style.transform = 'translateY(-100%)';
-            cover.style.opacity = '0';
+        
+        // Data untuk acara (sesuaikan dengan tanggal acara Anda)
+        const weddingDate = new Date('June 15, 2024 08:00:00').getTime();
+        
+        // Variabel untuk melacak status musik
+        let isMusicPlaying = false;
+        let musicInitialized = false;
+        
+        // Fungsi untuk membuat animasi bintang
+        function createStars() {
+            const starContainer = document.getElementById('star-container');
+            const starCount = 100;
             
-            setTimeout(() => {
-                cover.style.display = 'none';
-            }, 1500);
-
-            // 2. Tampilkan konten utama
-            setTimeout(() => {
-                mainContent.style.opacity = '1';
-            }, 500);
-            
-            // 3. Putar musik
-            bgMusic.play().catch(e => console.log("Autoplay ditolak oleh browser."));
-            musicIcon.classList.remove('fa-play');
-            musicIcon.classList.add('fa-pause');
-
-            // 4. Re-inisialisasi AOS setelah konten utama tampil
-            setTimeout(() => {
-                AOS.refresh();
-            }, 500);
-            
-            // 5. Tampilkan data kehadiran yang sudah tersimpan
-            displayAttendanceData();
-        });
-
-        // --- Logika untuk Tombol Musik ---
-        let isPlaying = false;
-        musicButton.addEventListener('click', () => {
-            if (isPlaying) {
-                bgMusic.pause();
-                musicIcon.classList.remove('fa-pause');
-                musicIcon.classList.add('fa-play');
-            } else {
-                bgMusic.play().catch(e => console.log("Autoplay ditolak oleh browser."));
-                musicIcon.classList.remove('fa-play');
-                musicIcon.classList.add('fa-pause');
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Ukuran acak
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Posisi acak
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                
+                // Durasi dan delay animasi acak
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                starContainer.appendChild(star);
             }
-            isPlaying = !isPlaying;
-        });
-
-        // --- Logika untuk Countdown Timer ---
-        const countdownDate = new Date(2024, 7, 10).getTime(); // 10 Agustus 2024
-
-        const countdownFunction = setInterval(() => {
+        }
+        
+        // Fungsi untuk membuat bunga sakura
+        function createSakura() {
+            const sakuraContainer = document.getElementById('sakura-container');
+            
+            function createOneSakura() {
+                const sakura = document.createElement('div');
+                sakura.classList.add('sakura');
+                
+                // Posisi horizontal acak
+                sakura.style.left = `${Math.random() * 100}%`;
+                
+                // Ukuran acak
+                const size = Math.random() * 15 + 10;
+                sakura.style.width = `${size}px`;
+                sakura.style.height = `${size}px`;
+                
+                // Durasi animasi acak
+                const duration = Math.random() * 10 + 10;
+                sakura.style.animationDuration = `${duration}s`;
+                
+                // Delay animasi acak
+                sakura.style.animationDelay = `${Math.random() * 5}s`;
+                
+                sakuraContainer.appendChild(sakura);
+                
+                // Hapus elemen setelah animasi selesai
+                setTimeout(() => {
+                    sakura.remove();
+                }, duration * 1000);
+            }
+            
+            // Buat sakura secara berkala
+            setInterval(createOneSakura, 500);
+            
+            // Buat beberapa sakura di awal
+            for (let i = 0; i < 15; i++) {
+                setTimeout(createOneSakura, i * 300);
+            }
+        }
+        
+        // Fungsi untuk membuat daun
+        function createLeaves() {
+            const leafContainer = document.getElementById('leaf-container');
+            
+            function createOneLeaf() {
+                const leaf = document.createElement('div');
+                leaf.classList.add('leaf');
+                
+                // Posisi horizontal acak
+                leaf.style.left = `${Math.random() * 100}%`;
+                
+                // Ukuran acak
+                const size = Math.random() * 15 + 10;
+                leaf.style.width = `${size}px`;
+                leaf.style.height = `${size}px`;
+                
+                // Durasi animasi acak
+                const duration = Math.random() * 15 + 10;
+                leaf.style.animationDuration = `${duration}s`;
+                
+                // Delay animasi acak
+                leaf.style.animationDelay = `${Math.random() * 5}s`;
+                
+                leafContainer.appendChild(leaf);
+                
+                // Hapus elemen setelah animasi selesai
+                setTimeout(() => {
+                    leaf.remove();
+                }, duration * 1000);
+            }
+            
+            // Buat daun secara berkala
+            setInterval(createOneLeaf, 800);
+            
+            // Buat beberapa daun di awal
+            for (let i = 0; i < 10; i++) {
+                setTimeout(createOneLeaf, i * 500);
+            }
+        }
+        
+        // Fungsi untuk membuat elemen floating
+        function createFloatingElements() {
+            const coverBg = document.getElementById('cover-bg');
+            
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                
+                // Ukuran acak
+                const size = Math.random() * 100 + 50;
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                
+                // Posisi acak
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                
+                // Delay animasi acak
+                element.style.animationDelay = `${Math.random() * 20}s`;
+                
+                // Durasi animasi acak
+                element.style.animationDuration = `${Math.random() * 10 + 15}s`;
+                
+                coverBg.appendChild(element);
+            }
+        }
+        
+        // Fungsi untuk membuat blink effect
+        function createBlinkEffects() {
+            const blinkContainer = document.getElementById('blink-container');
+            
+            function createOneBlink() {
+                const blink = document.createElement('div');
+                blink.classList.add('blink');
+                
+                // Posisi acak
+                blink.style.left = `${Math.random() * 100}%`;
+                blink.style.top = `${Math.random() * 100}%`;
+                
+                // Ukuran acak
+                const size = Math.random() * 100 + 50;
+                blink.style.width = `${size}px`;
+                blink.style.height = `${size}px`;
+                
+                // Delay animasi acak
+                blink.style.animationDelay = `${Math.random() * 4}s`;
+                
+                blinkContainer.appendChild(blink);
+                
+                // Hapus elemen setelah animasi selesai
+                setTimeout(() => {
+                    blink.remove();
+                }, 4000);
+            }
+            
+            // Buat blink secara berkala
+            setInterval(createOneBlink, 1000);
+            
+            // Buat beberapa blink di awal
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createOneBlink, i * 500);
+            }
+        }
+        
+        // Fungsi untuk mengambil parameter dari URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        
+        // Fungsi untuk mengatur nama tamu dari URL
+        function setGuestNameFromUrl() {
+            const guestName = getUrlParameter('nama') || getUrlParameter('to') || 'Tamu Undangan';
+            document.getElementById('guest-name-display').textContent = guestName;
+            document.getElementById('guest-name').value = guestName;
+        }
+        
+        // Fungsi untuk countdown
+        function updateCountdown() {
             const now = new Date().getTime();
-            const distance = countdownDate - now;
-
-            // Perhitungan waktu
+            const distance = weddingDate - now;
+            
+            // Hitung hari, jam, menit, detik
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Tampilkan di HTML
-            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
-            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
-
-            // Jika waktu habis
+            
+            // Update elemen countdown
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            // Update counter hitung hari
+            document.getElementById('days-counter').textContent = days;
+            
+            // Jika countdown selesai
             if (distance < 0) {
-                clearInterval(countdownFunction);
-                document.getElementById('countdown').innerHTML = "<p class='text-xl text-center' style='color: var(--primary-pink);'>Acara Telah Berlangsung</p>";
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = '<div class="text-center text-2xl" style="color: var(--primary-pink);">Acara Telah Berlangsung!</div>';
+                document.getElementById('days-counter').textContent = '0';
             }
-        }, 1000);
-
-        // --- Logika untuk Background Animation ---
-        const coverBg = document.getElementById('cover-bg');
-        
-        for (let i = 0; i < 15; i++) {
-            const element = document.createElement('div');
-            element.classList.add('floating-element');
-            
-            // Ukuran acak
-            const size = Math.random() * 100 + 50;
-            element.style.width = `${size}px`;
-            element.style.height = `${size}px`;
-            
-            // Posisi acak
-            element.style.left = `${Math.random() * 100}%`;
-            element.style.top = `${Math.random() * 100}%`;
-            
-            // Delay animasi acak
-            element.style.animationDelay = `${Math.random() * 20}s`;
-            
-            // Durasi animasi acak
-            element.style.animationDuration = `${Math.random() * 10 + 15}s`;
-            
-            coverBg.appendChild(element);
         }
-
-        // --- Logika untuk Bunga Sakura ---
-        const sakuraContainer = document.getElementById('sakura-container');
         
-        function createSakura() {
-            const sakura = document.createElement('div');
-            sakura.classList.add('sakura');
+        // Fungsi untuk memutar musik
+        function playMusic() {
+            const bgMusic = document.getElementById('bg-music');
+            const musicIcon = document.getElementById('music-icon');
             
-            // Posisi horizontal acak
-            sakura.style.left = `${Math.random() * 100}%`;
+            if (!musicInitialized) {
+                // Set volume
+                bgMusic.volume = 0.5;
+                
+                // Coba putar musik
+                const playPromise = bgMusic.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Musik berhasil diputar
+                        isMusicPlaying = true;
+                        musicInitialized = true;
+                        musicIcon.classList.remove('fa-play');
+                        musicIcon.classList.add('fa-pause');
+                        console.log("Musik berhasil diputar");
+                    }).catch(error => {
+                        // Autoplay mungkin diblokir
+                        console.log("Autoplay diblokir:", error);
+                        musicIcon.classList.remove('fa-pause');
+                        musicIcon.classList.add('fa-play');
+                    });
+                }
+            }
+        }
+        
+        // Fungsi untuk membuka undangan
+        function openInvitation() {
+            const cover = document.getElementById('cover');
+            const mainContent = document.getElementById('main-content');
+            const scrollIndicator = document.getElementById('scroll-indicator');
             
-            // Ukuran acak
-            const size = Math.random() * 15 + 10;
-            sakura.style.width = `${size}px`;
-            sakura.style.height = `${size}px`;
+            // Putar musik saat tombol diklik
+            playMusic();
             
-            // Durasi animasi acak
-            const duration = Math.random() * 10 + 10;
-            sakura.style.animationDuration = `${duration}s`;
+            // Animasi menutup cover
+            cover.style.transform = 'translateY(-100%)';
+            cover.style.opacity = '0';
             
-            // Delay animasi acak
-            sakura.style.animationDelay = `${Math.random() * 5}s`;
-            
-            sakuraContainer.appendChild(sakura);
-            
-            // Hapus elemen setelah animasi selesai
+            // Tampilkan konten utama
             setTimeout(() => {
-                sakura.remove();
-            }, duration * 1000);
+                mainContent.style.opacity = '1';
+                cover.style.display = 'none';
+                scrollIndicator.style.display = 'block';
+                
+                // Refresh AOS setelah konten ditampilkan
+                AOS.refresh();
+            }, 1000);
         }
         
-        // Buat sakura secara berkala
-        setInterval(createSakura, 300);
-        
-        // Buat beberapa sakura di awal
-        for (let i = 0; i < 15; i++) {
-            setTimeout(createSakura, i * 200);
-        }
-
-        // --- Logika untuk Kristal ---
-        const crystalContainer = document.getElementById('crystal-container');
-        
-        function createCrystal() {
-            const crystal = document.createElement('div');
-            crystal.classList.add('crystal');
+        // Fungsi untuk toggle musik
+        function toggleMusic() {
+            const bgMusic = document.getElementById('bg-music');
+            const musicIcon = document.getElementById('music-icon');
             
-            // Posisi horizontal acak
-            crystal.style.left = `${Math.random() * 100}%`;
-            
-            // Ukuran acak
-            const size = Math.random() * 10 + 5;
-            crystal.style.width = `${size}px`;
-            crystal.style.height = `${size}px`;
-            
-            // Durasi animasi acak
-            const duration = Math.random() * 10 + 10;
-            crystal.style.animationDuration = `${duration}s`;
-            
-            // Delay animasi acak
-            crystal.style.animationDelay = `${Math.random() * 5}s`;
-            
-            crystalContainer.appendChild(crystal);
-            
-            // Hapus elemen setelah animasi selesai
-            setTimeout(() => {
-                crystal.remove();
-            }, duration * 1000);
-        }
-        
-        // Buat kristal secara berkala
-        setInterval(createCrystal, 500);
-        
-        // Buat beberapa kristal di awal
-        for (let i = 0; i < 10; i++) {
-            setTimeout(createCrystal, i * 300);
-        }
-
-        // --- Logika untuk Blink Effect ---
-        const blinkContainer = document.getElementById('blink-container');
-        
-        function createBlink() {
-            const blink = document.createElement('div');
-            blink.classList.add('blink');
-            
-            // Posisi acak
-            blink.style.left = `${Math.random() * 100}%`;
-            blink.style.top = `${Math.random() * 100}%`;
-            
-            // Ukuran acak
-            const size = Math.random() * 100 + 50;
-            blink.style.width = `${size}px`;
-            blink.style.height = `${size}px`;
-            
-            // Delay animasi acak
-            blink.style.animationDelay = `${Math.random() * 4}s`;
-            
-            blinkContainer.appendChild(blink);
-            
-            // Hapus elemen setelah animasi selesai
-            setTimeout(() => {
-                blink.remove();
-            }, 4000);
-        }
-        
-        // Buat blink secara berkala
-        setInterval(createBlink, 1000);
-        
-        // Buat beberapa blink di awal
-        for (let i = 0; i < 5; i++) {
-            setTimeout(createBlink, i * 500);
-        }
-
-        // --- Logika untuk Form Kehadiran ---
-        document.getElementById('attendance-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('attendance-name').value;
-            const presence = document.getElementById('attendance-presence').value;
-            const message = document.getElementById('attendance-message').value;
-            
-            // Simpan data kehadiran
-            const attendance = {
-                id: Date.now(),
-                name: name,
-                presence: presence,
-                message: message,
-                timestamp: new Date().toLocaleString('id-ID')
-            };
-            
-            attendanceData.unshift(attendance); // Tambahkan di awal array
-            localStorage.setItem('weddingAttendance', JSON.stringify(attendanceData));
-            
-            // Tampilkan data terbaru
-            displayAttendanceData();
-            
-            // Reset form
-            this.reset();
-            
-            // Tampilkan notifikasi
-            alert(`Terima kasih ${name} atas konfirmasi kehadiran Anda!`);
-        });
-
-        // --- Fungsi untuk Menampilkan Data Kehadiran ---
-        function displayAttendanceData() {
-            const attendanceList = document.getElementById('attendance-list');
-            
-            if (attendanceData.length === 0) {
-                attendanceList.innerHTML = '<p class="text-center text-gray-500">Belum ada konfirmasi kehadiran</p>';
+            if (!musicInitialized) {
+                playMusic();
                 return;
             }
             
-            // Tampilkan maksimal 10 konfirmasi terbaru
-            const recentAttendances = attendanceData.slice(0, 10);
-            
-            attendanceList.innerHTML = `
-                <h3 class="text-center text-xl font-bold mb-4" style="color: var(--primary-pink);">Daftar Konfirmasi</h3>
-                ${recentAttendances.map(attendance => `
-                    <div class="attendance-item">
-                        <div class="guest-info">
-                            <span class="guest-name">${attendance.name}</span>
-                            ${attendance.message ? `<span class="guest-message">${attendance.message}</span>` : ''}
-                        </div>
-                        <div class="attendance-status ${attendance.presence === 'hadir' ? 'status-present' : 'status-absent'}">
-                            ${attendance.presence === 'hadir' ? 'Hadir' : 'Tidak Hadir'}
-                        </div>
-                    </div>
-                `).join('')}
-            `;
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-play');
+            } else {
+                bgMusic.play();
+                musicIcon.classList.remove('fa-play');
+                musicIcon.classList.add('fa-pause');
+            }
+            isMusicPlaying = !isMusicPlaying;
         }
-
-        // --- Logika untuk Tombol WhatsApp ---
-        document.getElementById('whatsapp-btn').addEventListener('click', function() {
-            const phoneNumber = '082273902728';
-            const message = 'Halo, saya sudah melakukan transfer hadiah pernikahan. Berikut detailnya:';
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        
+        // Fungsi untuk menangani form RSVP
+        function handleRsvpForm(event) {
+            event.preventDefault();
             
-            window.open(whatsappUrl, '_blank');
-        });
-
-        // --- Logika untuk Form RSVP ---
-        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
-            e.preventDefault();
+            const guestName = document.getElementById('guest-name').value;
+            const guestCount = document.getElementById('guest-count').value;
+            const attendanceStatus = document.getElementById('attendance-status').value;
+            const guestMessage = document.getElementById('guest-message').value;
             
-            // Di aplikasi nyata, ini akan mengirim data ke server
-            // Untuk demo, kita hanya menampilkan alert
-            alert('Terima kasih atas ucapan dan doa Anda!');
+            // Simpan data ke localStorage (bisa diganti dengan pengiriman ke server)
+            const rsvpData = {
+                name: guestName,
+                count: guestCount,
+                status: attendanceStatus,
+                message: guestMessage,
+                timestamp: new Date().toLocaleString()
+            };
+            
+            // Ambil data yang sudah ada
+            let existingData = JSON.parse(localStorage.getItem('weddingRsvp')) || [];
+            existingData.push(rsvpData);
+            
+            // Simpan kembali
+            localStorage.setItem('weddingRsvp', JSON.stringify(existingData));
+            
+            // Update daftar kehadiran
+            updateAttendanceList();
+            
+            // Tampilkan notifikasi
+            alert('Terima kasih! Konfirmasi kehadiran Anda telah berhasil dikirim.');
             
             // Reset form
-            this.reset();
+            document.getElementById('rsvp-form').reset();
+            document.getElementById('guest-name').value = document.getElementById('guest-name-display').textContent;
+            
+            // Kirim konfirmasi ke WhatsApp (opsional)
+            sendWhatsAppConfirmation(rsvpData);
+        }
+        
+        // Fungsi untuk mengirim konfirmasi ke WhatsApp
+        function sendWhatsAppConfirmation(rsvpData) {
+            const phoneNumber = "6282273902728"; // Ganti dengan nomor WhatsApp tujuan
+            const message = `Halo, saya ${rsvpData.name} ingin mengkonfirmasi kehadiran untuk acara pernikahan Rizki & Sri. Saya akan ${rsvpData.status === 'hadir' ? 'hadir' : 'tidak hadir'} dengan ${rsvpData.count} orang. ${rsvpData.message ? `Pesan: ${rsvpData.message}` : ''}`;
+            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            // Buka jendela baru untuk WhatsApp
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Fungsi untuk memperbarui daftar kehadiran
+        function updateAttendanceList() {
+            const attendanceList = document.getElementById('attendance-list');
+            const rsvpData = JSON.parse(localStorage.getItem('weddingRsvp')) || [];
+            
+            if (rsvpData.length === 0) {
+                attendanceList.innerHTML = '<div class="text-center py-4 text-gray-500">Belum ada konfirmasi kehadiran</div>';
+                return;
+            }
+            
+            // Urutkan berdasarkan waktu terbaru
+            rsvpData.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            let html = '';
+            rsvpData.forEach(item => {
+                const statusClass = item.status === 'hadir' ? 'status-present' : 
+                                  item.status === 'tidak-hadir' ? 'status-absent' : 'status-absent';
+                const statusText = item.status === 'hadir' ? 'Hadir' : 
+                                 item.status === 'tidak-hadir' ? 'Tidak Hadir' : 'Ragu-Ragu';
+                
+                html += `
+                    <div class="attendance-item">
+                        <div class="guest-info">
+                            <div class="guest-name">${item.name}</div>
+                            <div class="guest-message">${item.message || 'Tidak ada pesan'}</div>
+                        </div>
+                        <div class="attendance-status ${statusClass}">${statusText}</div>
+                    </div>
+                `;
+            });
+            
+            attendanceList.innerHTML = html;
+        }
+        
+        // Event Listeners
+        document.getElementById('open-button').addEventListener('click', openInvitation);
+        document.getElementById('music-button').addEventListener('click', toggleMusic);
+        document.getElementById('rsvp-form').addEventListener('submit', handleRsvpForm);
+        document.getElementById('whatsapp-confirm').addEventListener('click', function() {
+            const guestName = document.getElementById('guest-name').value || document.getElementById('guest-name-display').textContent;
+            const phoneNumber = "6282273902728"; // Ganti dengan nomor WhatsApp tujuan
+            const message = `Halo, saya ${guestName} ingin mengkonfirmasi kehadiran untuk acara pernikahan Rizki & Sri.`;
+            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
         });
+        
+        // Sembunyikan scroll indicator ketika user scroll
+        window.addEventListener('scroll', function() {
+            const scrollIndicator = document.getElementById('scroll-indicator');
+            if (window.scrollY > 100) {
+                scrollIndicator.style.display = 'none';
+            }
+        });
+        
+        // Inisialisasi
+        window.onload = function() {
+            createStars();
+            createSakura();
+            createLeaves();
+            createFloatingElements();
+            createBlinkEffects();
+            setGuestNameFromUrl();
+            updateCountdown();
+            updateAttendanceList();
+            
+            // Update countdown setiap detik
+            const countdownInterval = setInterval(updateCountdown, 1000);
+        };
     </script>
 </body>
 </html>
