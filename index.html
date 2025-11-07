@@ -614,6 +614,138 @@
             box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
         }
         
+        /* Gift Section */
+        .gift-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .qris-code {
+            width: 200px;
+            height: 200px;
+            margin: 1.5rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--primary-pink);
+            background: white;
+            padding: 10px;
+        }
+        
+        .qris-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .bank-info {
+            background: var(--light-pink);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        
+        .bank-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 107, 157, 0.2);
+        }
+        
+        .bank-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* Attendance Section */
+        .attendance-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .attendance-list {
+            margin-top: 2rem;
+            max-height: 300px;
+            overflow-y: auto;
+            border-radius: 15px;
+            background: var(--light-pink);
+            padding: 1.5rem;
+        }
+        
+        .attendance-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .attendance-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .guest-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .guest-name {
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 0.3rem;
+        }
+        
+        .guest-message {
+            font-size: 0.85rem;
+            color: #777;
+        }
+        
+        .attendance-status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-present {
+            background: rgba(37, 211, 102, 0.1);
+            color: #25D366;
+        }
+        
+        .status-absent {
+            background: rgba(255, 107, 157, 0.1);
+            color: var(--primary-pink);
+        }
+        
         /* Music Player */
         .music-player {
             position: fixed;
@@ -845,6 +977,89 @@
                 </div>
             </div>
             
+            <!-- Attendance Section -->
+            <div class="section-card" data-aos="fade-up">
+                <h2 class="section-title font-script">Konfirmasi Kehadiran</h2>
+                
+                <div class="attendance-container">
+                    <form class="rsvp-form" id="attendance-form">
+                        <div class="form-group">
+                            <label class="form-label" for="attendance-name">Nama Lengkap</label>
+                            <input type="text" id="attendance-name" class="form-input" placeholder="Masukkan nama lengkap Anda" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="attendance-presence">Konfirmasi Kehadiran</label>
+                            <select id="attendance-presence" class="form-select" required>
+                                <option value="">Pilih konfirmasi</option>
+                                <option value="hadir">Hadir</option>
+                                <option value="tidak-hadir">Tidak Hadir</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="attendance-message">Pesan (Opsional)</label>
+                            <textarea id="attendance-message" class="form-textarea" rows="3" placeholder="Tulis pesan atau doa untuk mempelai..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fa-solid fa-check-circle mr-2"></i> Konfirmasi Kehadiran
+                        </button>
+                    </form>
+                    
+                    <div class="attendance-list" id="attendance-list">
+                        <h3 class="text-center text-xl font-bold mb-4" style="color: var(--primary-pink);">Daftar Konfirmasi</h3>
+                        <!-- Daftar konfirmasi akan ditampilkan di sini -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gift Section -->
+            <div class="section-card" data-aos="fade-up">
+                <h2 class="section-title font-script">Kirim Hadiah</h2>
+                
+                <div class="gift-container">
+                    <p class="text-center text-lg mb-6">
+                        Doa dan restu Anda merupakan hadiah terindah bagi kami. Namun jika berkenan memberikan tanda kasih, 
+                        kami dengan senang hati menerimanya melalui:
+                    </p>
+                    
+                    <div class="qris-code">
+                        <!-- Ganti dengan QRIS asli Anda -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://example.com/qris-payment" alt="QRIS Payment">
+                    </div>
+                    
+                    <p class="text-center mb-4 font-bold">Atau transfer ke rekening berikut:</p>
+                    
+                    <div class="bank-info">
+                        <div class="bank-item">
+                            <span>Bank BCA</span>
+                            <span class="font-bold">123 456 7890</span>
+                        </div>
+                        <div class="bank-item">
+                            <span>a.n.</span>
+                            <span class="font-bold">Rizki Doli Harahap</span>
+                        </div>
+                        <div class="bank-item">
+                            <span>Bank Mandiri</span>
+                            <span class="font-bold">098 765 4321</span>
+                        </div>
+                        <div class="bank-item">
+                            <span>a.n.</span>
+                            <span class="font-bold">Sri Raudhoh Ikky Mr Ritonga</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-center text-sm text-gray-600 mb-4">
+                        Setelah melakukan transfer, mohon konfirmasi melalui WhatsApp dengan menekan tombol di bawah:
+                    </p>
+                    
+                    <button class="whatsapp-btn" id="whatsapp-btn">
+                        <i class="fab fa-whatsapp mr-2"></i> Konfirmasi via WhatsApp
+                    </button>
+                </div>
+            </div>
+            
             <!-- RSVP Section -->
             <div class="section-card" data-aos="fade-up">
                 <h2 class="section-title font-script">Kirim Ucapan</h2>
@@ -853,14 +1068,6 @@
                     <div class="form-group">
                         <label class="form-label" for="nama">Nama Anda</label>
                         <input type="text" id="nama" class="form-input" placeholder="Tulis nama Anda...">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="kehadiran">Konfirmasi Kehadiran</label>
-                        <select id="kehadiran" class="form-select">
-                            <option>Hadir</option>
-                            <option>Tidak Hadir</option>
-                        </select>
                     </div>
                     
                     <div class="form-group">
@@ -900,6 +1107,9 @@
             offset: 100
         });
 
+        // Data untuk menyimpan konfirmasi kehadiran
+        let attendanceData = JSON.parse(localStorage.getItem('weddingAttendance')) || [];
+
         // --- Logika untuk Tombol Buka Undangan ---
         const cover = document.getElementById('cover');
         const mainContent = document.getElementById('main-content');
@@ -931,6 +1141,9 @@
             setTimeout(() => {
                 AOS.refresh();
             }, 500);
+            
+            // 5. Tampilkan data kehadiran yang sudah tersimpan
+            displayAttendanceData();
         });
 
         // --- Logika untuk Tombol Musik ---
@@ -1110,13 +1323,80 @@
             setTimeout(createBlink, i * 500);
         }
 
+        // --- Logika untuk Form Kehadiran ---
+        document.getElementById('attendance-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('attendance-name').value;
+            const presence = document.getElementById('attendance-presence').value;
+            const message = document.getElementById('attendance-message').value;
+            
+            // Simpan data kehadiran
+            const attendance = {
+                id: Date.now(),
+                name: name,
+                presence: presence,
+                message: message,
+                timestamp: new Date().toLocaleString('id-ID')
+            };
+            
+            attendanceData.unshift(attendance); // Tambahkan di awal array
+            localStorage.setItem('weddingAttendance', JSON.stringify(attendanceData));
+            
+            // Tampilkan data terbaru
+            displayAttendanceData();
+            
+            // Reset form
+            this.reset();
+            
+            // Tampilkan notifikasi
+            alert(`Terima kasih ${name} atas konfirmasi kehadiran Anda!`);
+        });
+
+        // --- Fungsi untuk Menampilkan Data Kehadiran ---
+        function displayAttendanceData() {
+            const attendanceList = document.getElementById('attendance-list');
+            
+            if (attendanceData.length === 0) {
+                attendanceList.innerHTML = '<p class="text-center text-gray-500">Belum ada konfirmasi kehadiran</p>';
+                return;
+            }
+            
+            // Tampilkan maksimal 10 konfirmasi terbaru
+            const recentAttendances = attendanceData.slice(0, 10);
+            
+            attendanceList.innerHTML = `
+                <h3 class="text-center text-xl font-bold mb-4" style="color: var(--primary-pink);">Daftar Konfirmasi</h3>
+                ${recentAttendances.map(attendance => `
+                    <div class="attendance-item">
+                        <div class="guest-info">
+                            <span class="guest-name">${attendance.name}</span>
+                            ${attendance.message ? `<span class="guest-message">${attendance.message}</span>` : ''}
+                        </div>
+                        <div class="attendance-status ${attendance.presence === 'hadir' ? 'status-present' : 'status-absent'}">
+                            ${attendance.presence === 'hadir' ? 'Hadir' : 'Tidak Hadir'}
+                        </div>
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        // --- Logika untuk Tombol WhatsApp ---
+        document.getElementById('whatsapp-btn').addEventListener('click', function() {
+            const phoneNumber = '082273902728';
+            const message = 'Halo, saya sudah melakukan transfer hadiah pernikahan. Berikut detailnya:';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        });
+
         // --- Logika untuk Form RSVP ---
         document.getElementById('rsvp-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Di aplikasi nyata, ini akan mengirim data ke server
             // Untuk demo, kita hanya menampilkan alert
-            alert('Terima kasih atas ucapan dan konfirmasi kehadiran Anda!');
+            alert('Terima kasih atas ucapan dan doa Anda!');
             
             // Reset form
             this.reset();
