@@ -3,1719 +3,786 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wedding of Rizki Doli & Sri Raudhoh Ikky</title>
+    <title>Undangan Pernikahan Rizky & Sri</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- AOS (Animate On Scroll) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <!-- Tone.js for Music -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    
     <style>
-        :root {
-            --primary-pink: #ff6b9d;
-            --secondary-pink: #ffa8c5;
-            --light-pink: #ffe6ef;
-            --gold: #d4af37;
-            --dark-gold: #b8941f;
-            --light-bg: #fff9fb;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-bg);
-            color: #555;
+            font-family: 'Inter', sans-serif;
+            background-color: #FFF0F5; /* Soft pink background */
+            color: #333;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 20%);
         }
         
-        .font-script {
-            font-family: 'Dancing Script', cursive;
+        /* Custom Fonts */
+        .font-great-vibes { font-family: 'Great Vibes', cursive; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        /* --- Animation: Opening Cover --- */
+        #cover {
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        #cover.hidden {
+            opacity: 0;
+            transform: scale(1.2);
+            pointer-events: none;
         }
         
-        .font-elegant {
-            font-family: 'Playfair Display', serif;
+        /* --- Animation: Fade-in on Scroll --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        
-        /* Animasi Background Cover */
-        .cover-bg {
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Animation: Falling Petals & Sparkles --- */
+        #petal-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            pointer-events: none;
+            z-index: 9998;
             overflow: hidden;
-            background: linear-gradient(135deg, #ff6b9d 0%, #ffa8c5 100%);
         }
-        
-        /* Animasi Bintang yang Lebih Halus */
-        .star {
+        .petal {
             position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(0.8);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        /* Animasi Bunga Sakura */
-        .sakura {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z' /%3E%3C/svg%3E");
-            background-size: contain;
+            top: -20px;
+            font-size: 20px;
+            color: #FFB6C1; /* Light Pink */
             opacity: 0.7;
-            animation: sakura-fall linear infinite;
-            z-index: 1;
+            animation: fall linear infinite;
         }
         
-        @keyframes sakura-fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Animasi Daun */
-        .leaf {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23a5d6a7' d='M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z' /%3E%3C/svg%3E");
-            background-size: contain;
-            opacity: 0.7;
-            animation: leaf-fall linear infinite;
-            z-index: 1;
-        }
-        
-        @keyframes leaf-fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Floating Elements */
-        .floating-element {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            animation: float 20s infinite linear;
-        }
-        
-        @keyframes float {
+        @keyframes fall {
             0% {
                 transform: translateY(0) rotate(0deg);
-                opacity: 0.5;
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-                opacity: 0.5;
-            }
-        }
-        
-        /* Animasi Blink */
-        .blink {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
-            opacity: 0;
-            animation: blink-effect 4s infinite;
-            z-index: 1;
-        }
-        
-        @keyframes blink-effect {
-            0%, 100% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            50% {
-                opacity: 0.4;
-                transform: scale(1);
-            }
-        }
-        
-        /* Cover Styles */
-        .cover-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-            transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), opacity 1s ease;
-        }
-        
-        .cover-content {
-            text-align: center;
-            color: white;
-            padding: 2rem;
-            max-width: 90%;
-            z-index: 10;
-            position: relative;
-        }
-        
-        .monogram {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 2rem;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            animation: pulse 3s infinite, rotate 20s infinite linear;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .monogram::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent, rgba(255,255,255,0.3), transparent 30%);
-            animation: rotate 4s linear infinite;
-        }
-        
-        .monogram-inner {
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-            position: relative;
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
-            }
-            70% {
-                box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-            }
-        }
-        
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-        
-        .cover-title {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            animation: title-float 6s ease-in-out infinite;
-        }
-        
-        @keyframes title-float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        .cover-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: subtitle-fade 3s ease-in-out infinite;
-        }
-        
-        @keyframes subtitle-fade {
-            0%, 100% {
                 opacity: 0.7;
             }
-            50% {
-                opacity: 1;
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.3;
             }
         }
         
-        .guest-name {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            animation: guest-pulse 4s ease-in-out infinite;
-        }
-        
-        @keyframes guest-pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.02);
-            }
-        }
-        
-        .open-btn {
-            background: white;
-            color: var(--primary-pink);
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            z-index: 2;
-        }
-        
-        .open-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.5s;
-        }
-        
-        .open-btn:hover::before {
-            left: 100%;
-        }
-        
-        .open-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Main Content Styles */
-        .main-content {
-            opacity: 0;
-            transition: opacity 1s ease;
-            padding-top: 2rem;
-        }
-        
-        .content-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .section-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .section-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-pink), var(--gold));
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-pink);
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-pink), var(--gold));
-            border-radius: 3px;
-        }
-        
-        /* Couple Section */
-        .couple-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-        
-        .couple-card {
-            text-align: center;
-            flex: 1;
-            min-width: 280px;
-            max-width: 350px;
-        }
-        
-        .photo-frame {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 1.5rem;
-            border-radius: 50%;
-            padding: 8px;
-            background: linear-gradient(135deg, var(--primary-pink), var(--gold));
-            position: relative;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            animation: photo-float 6s ease-in-out infinite;
-        }
-        
-        @keyframes photo-float {
+        /* --- Animation: Gentle Float (untuk Kartun) --- */
+        @keyframes floatAnimation {
             0%, 100% {
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-12px);
             }
         }
-        
-        .couple-photo {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
+        .float-animation {
+            animation: floatAnimation 6s ease-in-out infinite;
         }
-        
-        .couple-name {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: #444;
-        }
-        
-        .couple-desc {
-            color: #777;
-            font-size: 0.95rem;
-        }
-        
-        .heart-connector {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 2rem 0;
-        }
-        
-        .heart-icon {
+
+        /* --- Countdown Timer Styling --- */
+        .countdown-box {
+            background: rgba(219, 68, 114, 0.1);
+            border-radius: 0.5rem;
+            padding: 0.75rem 0.5rem;
             width: 60px;
             height: 60px;
-            background: var(--primary-pink);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
-            animation: heartbeat 2s infinite;
-        }
-        
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
-        
-        /* Event Section */
-        .event-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        
-        .event-card {
-            flex: 1;
-            min-width: 280px;
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            border-top: 5px solid var(--primary-pink);
-            transition: all 0.3s ease;
-        }
-        
-        .event-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .event-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 1.5rem;
-            background: var(--light-pink);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--primary-pink);
-        }
-        
-        .event-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #444;
-        }
-        
-        .event-details {
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Countdown Section */
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .countdown-item {
-            text-align: center;
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem 1rem;
-            min-width: 100px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .countdown-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .countdown-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-pink);
-            margin-bottom: 0.5rem;
-        }
-        
-        .countdown-label {
-            font-size: 0.9rem;
-            color: #777;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* RSVP Section */
-        .rsvp-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #555;
-            font-weight: 500;
-        }
-        
-        .form-input, .form-select, .form-textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-        }
-        
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary-pink);
-            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
-        }
-        
-        .submit-btn {
-            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: block;
-            width: 100%;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
-        }
-        
-        /* Gift Section */
-        .gift-container {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .qris-code {
-            width: 200px;
-            height: 200px;
-            margin: 1.5rem auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border: 3px solid var(--primary-pink);
-            background: white;
-            padding: 10px;
-        }
-        
-        .qris-code img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .bank-info {
-            background: var(--light-pink);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            text-align: left;
-        }
-        
-        .bank-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.8rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid rgba(255, 107, 157, 0.2);
-        }
-        
-        .bank-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-        
-        .whatsapp-btn {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 1rem;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-        }
-        
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
-        }
-        
-        /* Attendance Section */
-        .attendance-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .attendance-list {
-            margin-top: 2rem;
-            max-height: 300px;
-            overflow-y: auto;
-            border-radius: 15px;
-            background: var(--light-pink);
-            padding: 1.5rem;
-        }
-        
-        .attendance-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            margin-bottom: 0.8rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .attendance-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .guest-info {
             display: flex;
             flex-direction: column;
-        }
-        
-        .guest-name {
-            font-weight: 600;
-            color: #444;
-            margin-bottom: 0.3rem;
-        }
-        
-        .guest-message {
-            font-size: 0.85rem;
-            color: #777;
-        }
-        
-        .attendance-status {
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .status-present {
-            background: rgba(37, 211, 102, 0.1);
-            color: #25D366;
-        }
-        
-        .status-absent {
-            background: rgba(255, 107, 157, 0.1);
-            color: var(--primary-pink);
-        }
-        
-        /* Music Player */
-        .music-player {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            z-index: 90;
-            transition: all 0.3s ease;
+        }
+        .countdown-box span:first-child {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #DB4472;
+        }
+        .countdown-box span:last-child {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #883952;
         }
         
-        .music-player:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .music-icon {
-            color: var(--primary-pink);
-            font-size: 1.2rem;
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--secondary-pink) 100%);
-            color: white;
-            margin-top: 3rem;
-            border-radius: 20px 20px 0 0;
-        }
-        
-        .footer-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-text {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            line-height: 1.6;
-        }
-        
-        .signature {
-            font-size: 2rem;
-            margin-top: 2rem;
-        }
-        
-        /* Tutorial Section */
-        .tutorial-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        
-        .tutorial-step {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .tutorial-step:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .step-number {
+        /* --- Music Toggle Button --- */
+        #music-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
             width: 40px;
             height: 40px;
-            background: var(--primary-pink);
-            color: white;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
-            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        #music-toggle:hover {
+            transform: scale(1.1);
         }
         
-        .step-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #444;
+        /* --- Tab/Accordion for Gifts --- */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-btn {
+            background-color: #ffffff;
+            color: #c2185b;
+            border: 1px solid #f8bbd0;
+            transition: all 0.3s ease;
+        }
+        .tab-btn.active {
+            background-image: linear-gradient(to right, #db2777, #c026d3);
+            color: white;
+            border-color: transparent;
         }
         
-        .step-desc {
-            color: #666;
-            font-size: 0.9rem;
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 6px;
         }
-        
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--primary-pink);
-            font-size: 1.5rem;
-            animation: bounce 2s infinite;
-            z-index: 80;
-            display: none;
+        ::-webkit-scrollbar-track {
+            background: #FFF0F5;
         }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .cover-title {
-                font-size: 2.5rem;
-            }
-            
-            .section-card {
-                padding: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .couple-container, .event-container, .tutorial-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .countdown-container {
-                gap: 1rem;
-            }
-            
-            .countdown-item {
-                min-width: 70px;
-                padding: 1rem 0.5rem;
-            }
-            
-            .countdown-value {
-                font-size: 2rem;
-            }
+        ::-webkit-scrollbar-thumb {
+            background: #D94680;
+            border-radius: 10px;
         }
     </style>
 </head>
-<body>
-    <!-- Background Animation Cover -->
-    <div class="cover-bg" id="cover-bg"></div>
-    
-    <!-- Animasi Bintang -->
-    <div id="star-container"></div>
-    
-    <!-- Animasi Bunga Sakura -->
-    <div id="sakura-container"></div>
-    
-    <!-- Animasi Daun -->
-    <div id="leaf-container"></div>
-    
-    <!-- Animasi Blink -->
-    <div id="blink-container"></div>
-    
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator" id="scroll-indicator">
-        <i class="fa-solid fa-chevron-down"></i>
-    </div>
-    
-    <!-- Cover Section -->
-    <div class="cover-container" id="cover">
-        <div class="cover-content">
-            <div class="monogram">
-                <div class="monogram-inner">
-                    <span class="font-script" style="font-size: 3.5rem; color: white;">R&S</span>
-                </div>
-            </div>
-            <p class="cover-subtitle">The Wedding of</p>
-            <h1 class="cover-title font-script">Rizki Doli & Sri Raudhoh</h1>
-            
-            <div class="guest-name">
-                <p>Kepada Yth. Bapak/Ibu/Saudara/i:</p>
-                <p class="font-elegant" style="font-size: 1.3rem; margin-top: 0.5rem;" id="guest-name-display">[Nama Tamu Undangan]</p>
-                <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.8;">(Mohon maaf bila ada kesalahan penulisan nama/gelar)</p>
-            </div>
-            
-            <button class="open-btn" id="open-button">
-                <i class="fa-solid fa-envelope-open mr-2"></i> Buka Undangan
-            </button>
-            
-            <!-- Petunjuk di Cover -->
-            <div class="mt-8 text-white text-sm opacity-80">
-                <p><i class="fa-solid fa-arrow-pointer mr-2"></i> Klik tombol "Buka Undangan" untuk melanjutkan</p>
-            </div>
+<body class="max-w-xl mx-auto overflow-x-hidden">
+
+    <!-- Petal Animation Container -->
+    <div id="petal-container"></div>
+
+    <!-- Background Music -->
+    <!-- Musik akan dibuat dengan Tone.js, tidak perlu file mp3 -->
+
+    <!-- Music Toggle Button -->
+    <button id="music-toggle" aria-label="Toggle Music">
+        <!-- SVG for Music On -->
+        <svg id="music-on-icon" class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l10.5-3v13.5m0-13.5L9 6m10.5 3.5v-3.5m-10.5 13.5V6"></path></svg>
+        <!-- SVG for Music Off -->
+        <svg id="music-off-icon" class="w-5 h-5 text-gray-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.683 3.707 11 3.934 11 4.293V19.707c0 .359-.317.586-.707.293L5.586 15z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path></svg>
+    </button>
+
+    <!-- 1. Opening Cover (Animasi Pembuka) -->
+    <div id="cover" class="fixed inset-0 z-[9999] bg-gradient-to-br from-pink-200 to-rose-50 flex flex-col items-center justify-center text-center p-8">
+        <h2 class="font-playfair text-xl text-pink-700">The Wedding Of</h2>
+        <h1 class="font-great-vibes text-6xl text-pink-900 my-6">Rizky & Sri</h1>
+        <div class="my-8">
+            <img src="https://placehold.co/150x150/F8BBD0/C2185B?text=R%26S" 
+                 alt="[Foto Pasangan R&S]"
+                 class="w-36 h-36 rounded-full shadow-lg border-4 border-white object-cover">
         </div>
+        <p class="text-lg text-pink-800">Kepada Yth.</p>
+        <p class="text-2xl font-bold text-pink-900 bg-white/50 px-4 py-2 rounded-lg" id="guest-name">Tamu Undangan</p>
+        <p class="mt-4 text-sm text-pink-700">Kami mengundang Anda untuk hadir di hari bahagia kami.</p>
+        <button id="open-invitation" class="mt-8 bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+            Buka Undangan
+        </button>
     </div>
-    
-    <!-- Music Player -->
-    <audio id="bg-music" loop>
-        <!-- Ganti dengan URL lagu yang Anda inginkan -->
-        <source src="lagu.mp3" type="audio/mpeg">
-        Browser Anda tidak mendukung elemen audio.
-    </audio>
-    
-    <div class="music-player" id="music-button">
-        <i class="fa-solid fa-play music-icon" id="music-icon"></i>
-    </div>
-    
-    <!-- Main Content -->
-    <main class="main-content" id="main-content">
-        <div class="content-section">
-            <!-- Opening Section -->
-            <div class="section-card" data-aos="fade-up">
-                <p class="text-center text-2xl mb-6" style="color: var(--primary-pink);">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-                <p class="text-center text-lg italic mb-6">
-                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
-                </p>
-                <p class="text-center font-bold">(QS. Ar-Rum: 21)</p>
-                
-                <div class="mt-8 pt-6 border-t border-gray-200">
-                    <p class="text-center text-xl mb-2" style="direction: rtl; font-family: 'Times New Roman', serif;">مَا رَأَيْتُ لِلْمُتَحَابَّيْنِ مِثْلَ النِّكَاحِ</p>
-                    <p class="text-center italic">Artinya: "Tidak pernah kulihat bagi dua orang yang saling mencintai semisal (cinta dalam) pernikahan."</p>
-                    <p class="text-center font-bold mt-1">(HR Baihaqi)</p>
+
+    <!-- Main Content (Hidden until cover is opened) -->
+    <main id="main-content" class="hidden opacity-0 transition-opacity duration-1000">
+        
+        <!-- 2. Hero Section -->
+        <header class="relative h-screen flex flex-col items-center justify-center text-center text-white p-6" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://placehold.co/600x800/F8BBD0/C2185B?text=Wedding+Photo') no-repeat center center/cover;">
+            <div class="absolute inset-0 bg-black opacity-30"></div>
+            <div class="z-10">
+                <h2 class="font-playfair text-xl fade-in">You are Invited to the Wedding of</h2>
+                <h1 class="font-great-vibes text-7xl my-4 fade-in">Rizky & Sri</h1>
+                <p class="font-playfair text-xl fade-in">31 Desember 2025</p>
+            </div>
+        </header>
+
+        <!-- Bismillah & Ayat -->
+        <section class="py-16 px-6 text-center bg-white shadow-inner-lg">
+            <p class="text-lg text-pink-700 mb-6 fade-in">
+                بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+            </p>
+            <p class="text-gray-600 max-w-lg mx-auto italic fade-in">
+                "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+            </p>
+            <p class="text-gray-700 font-semibold mt-4 fade-in">(QS. Ar-Rum: 21)</p>
+            
+            <!-- Pemisah Bagian -->
+            <p class="font-playfair text-3xl text-pink-300 my-10 fade-in">~ 🤍 ~</p>
+        </section>
+
+        <!-- 3. Mempelai (The Couple) -->
+        <section class="py-16 px-6 text-center">
+            <h2 class="font-playfair text-4xl text-pink-800 mb-12 fade-in">Pasangan Mempelai</h2>
+            
+            <!-- Mempelai Pria -->
+            <div class="mb-12 fade-in">
+                <img src="https://placehold.co/150x150/F8BBD0/333?text=Rizky" alt="[Foto Rizky Doli]" class="w-36 h-36 rounded-full mx-auto shadow-lg border-4 border-white object-cover transform transition-transform duration-300 hover:scale-105">
+                <h3 class="font-great-vibes text-5xl text-pink-800 mt-6">Rizky Doli</h3>
+                <p class="text-gray-600 mt-2">Putra dari</p>
+                <p class="text-gray-800 font-semibold">Bapak [Nama Ayah Rizky] & Ibu [Nama Ibu Rizky]</p>
+            </div>
+            
+            <!-- (BARU) Kartun Pasangan & Animasi -->
+            <div class="my-8 fade-in float-animation">
+                <img src="https://placehold.co/200x200/F8BBD0/C2185B?text=Kartun+Pasangan+Hijab" 
+                     alt="[Kartun Pasangan Pengantin Hijab]"
+                     class="w-48 h-48 rounded-full mx-auto shadow-lg border-4 border-white object-cover">
+                <span class="font-great-vibes text-6xl text-pink-500 mt-4 block">&</span>
+            </div>
+            
+            <!-- Mempelai Wanita -->
+            <div class="mt-12 fade-in">
+                <img src="https://placehold.co/150x150/F8BBD0/333?text=Sri" alt="[Foto Sri Raudoh]" class="w-36 h-36 rounded-full mx-auto shadow-lg border-4 border-white object-cover transform transition-transform duration-300 hover:scale-105">
+                <h3 class="font-great-vibes text-5xl text-pink-800 mt-6">Sri Raudoh</h3>
+                <p class="text-gray-600 mt-2">Putri dari</p>
+                <p class="text-gray-800 font-semibold">Bapak [Nama Ayah Sri] & Ibu [Nama Ibu Sri]</p>
+            </div>
+        </section>
+
+        <!-- 4. Countdown Timer -->
+        <section class="py-16 px-6 bg-white shadow-inner-lg text-center fade-in">
+            <h2 class="font-playfair text-4xl text-pink-800 mb-8">Menuju Hari H</h2>
+            <div id="countdown" class="flex justify-center gap-3 sm:gap-6">
+                <div class="countdown-box">
+                    <span id="days">00</span>
+                    <span>Hari</span>
                 </div>
-                
-                <!-- Petunjuk di Konten Utama -->
-                <div class="mt-8 p-4 bg-var(--light-pink) rounded-lg text-center">
-                    <p class="font-bold text-var(--primary-pink) mb-2">Petunjuk Penggunaan:</p>
-                    <p><i class="fa-solid fa-computer-mouse mr-2"></i> Scroll ke bawah untuk melihat informasi lengkap</p>
-                    <p><i class="fa-solid fa-music mr-2"></i> Klik ikon musik di kanan bawah untuk mengontrol suara</p>
-                    <p><i class="fa-solid fa-reply mr-2"></i> Isi form konfirmasi kehadiran di bagian bawah</p>
+                <div class="countdown-box">
+                    <span id="hours">00</span>
+                    <span>Jam</span>
+                </div>
+                <div class="countdown-box">
+                    <span id="minutes">00</span>
+                    <span>Menit</span>
+                </div>
+                <div class="countdown-box">
+                    <span id="seconds">00</span>
+                    <span>Detik</span>
                 </div>
             </div>
             
-            <!-- Tutorial Section -->
-            <div class="section-card" data-aos="fade-up">
-                <h2 class="section-title font-script">Cara Menggunakan Undangan</h2>
-                
-                <div class="tutorial-container">
-                    <div class="tutorial-step" data-aos="zoom-in">
-                        <div class="step-number">1</div>
-                        <h3 class="step-title">Buka Undangan</h3>
-                        <p class="step-desc">Klik tombol "Buka Undangan" di halaman awal untuk melihat isi lengkap undangan</p>
-                    </div>
-                    
-                    <div class="tutorial-step" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="step-number">2</div>
-                        <h3 class="step-title">Scroll/Desak</h3>
-                        <p class="step-desc">Gunakan scroll mouse atau desak layar ke bawah untuk melihat semua bagian undangan</p>
-                    </div>
-                    
-                    <div class="tutorial-step" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="step-number">3</div>
-                        <h3 class="step-title">Konfirmasi Kehadiran</h3>
-                        <p class="step-desc">Isi form konfirmasi kehadiran untuk memberi tahu apakah Anda bisa hadir</p>
-                    </div>
-                    
-                    <div class="tutorial-step" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="step-number">4</div>
-                        <h3 class="step-title">Kirim Ucapan</h3>
-                        <p class="step-desc">Tulis pesan dan doa untuk mempelai melalui form ucapan</p>
-                    </div>
-                </div>
-            </div>
+            <!-- Pemisah Bagian -->
+            <p class="font-playfair text-3xl text-pink-300 mt-16 fade-in">~ 🌸 ~</p>
+        </section>
+
+        <!-- 5. Acara (Event Details) & Maps -->
+        <section class="py-16 px-6">
+            <h2 class="font-playfair text-4xl text-pink-800 mb-12 text-center fade-in">Detail Acara</h2>
             
-            <!-- Couple Section -->
-            <div class="section-card" data-aos="fade-up">
-                <h2 class="section-title font-script">Mempelai</h2>
-                
-                <div class="couple-container">
-                    <div class="couple-card" data-aos="fade-right">
-                        <div class="photo-frame">
-                            <img src="loid.jpg" alt="Mempelai Pria" class="couple-photo">
-                        </div>
-                        <h3 class="couple-name font-script">Rizki Doli Harahap</h3>
-                        <p class="couple-desc">Putra dari Bapak [Nama Ayah]</p>
-                        <p class="couple-desc">& Ibu [Nama Ibu]</p>
-                    </div>
-                    
-                    <div class="heart-connector">
-                        <div class="heart-icon">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="couple-card" data-aos="fade-left">
-                        <div class="photo-frame">
-                            <img src="yor.jpg" alt="Mempelai Wanita" class="couple-photo">
-                        </div>
-                        <h3 class="couple-name font-script">Sri Raudhoh Ikky Mr Ritonga</h3>
-                        <p class="couple-desc">Putri dari Bapak [Nama Ayah]</p>
-                        <p class="couple-desc">& Ibu [Nama Ibu]</p>
-                    </div>
+            <!-- (DIUBAH) Akad Nikah Card - Desain baru (bukan glassmorphism) -->
+            <div class="bg-white shadow-xl rounded-2xl p-6 sm:p-8 mb-8 fade-in">
+                <h3 class="font-playfair text-3xl text-pink-700 text-center">Akad Nikah</h3>
+                <div class="flex items-center justify-center my-6 text-pink-800">
+                    <!-- Icon Kalender -->
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <p class="text-lg">Rabu, 31 Desember 2025</p>
                 </div>
+                <div class="flex items-center justify-center mb-6 text-pink-800">
+                    <!-- Icon Jam -->
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p class="text-lg">Pukul 08.00 WIB - Selesai</p>
+                </div>
+                <p class="text-center text-gray-700 font-semibold text-lg">Mesjid Raya Padangsidimpuan</p>
+                <p class="text-center text-gray-600 text-sm mt-1">Jl. Mesjid Raya Baru, Padangsidimpuan</p>
+                
+                <!-- Peta Mini -->
+                <div class="rounded-lg overflow-hidden mt-6 shadow-md border border-gray-200">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.971550993951!2d99.270425!3d1.373199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e956977bf5137%3A0xe84a9e53b963e635!2sMasjid%20Raya%20Padangsidimpuan!5e0!3m2!1sen!2sid!4v1678888888888" 
+                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://maps.app.goo.gl/y2BvT2Yf8b88Jq6C9" target="_blank" class="block w-full text-center bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold py-3 px-6 rounded-lg mt-6 transform hover:scale-105 transition-all duration-300">
+                    Lihat Lokasi di Google Maps
+                </a>
             </div>
-            
-            <!-- Event Section -->
-            <div class="section-card" data-aos="fade-up">
-                <h2 class="section-title font-script">Acara</h2>
-                
-                <div class="event-container">
-                    <div class="event-card" data-aos="flip-left">
-                        <div class="event-icon">
-                            <i class="fa-solid fa-mosque"></i>
-                        </div>
-                        <h3 class="event-title">Akad Nikah</h3>
-                        <p class="event-details"><i class="fa-solid fa-calendar-days mr-2"></i> Sabtu, 15 Juni 2024</p>
-                        <p class="event-details"><i class="fa-solid fa-clock mr-2"></i> 08.00 - 10.00 WIB</p>
-                        <p class="event-details"><i class="fa-solid fa-location-dot mr-2"></i> Masjid Al-Mubarak</p>
-                        <p class="event-details">Jl. Merdeka No. 123, Medan</p>
-                    </div>
-                    
-                    <div class="event-card" data-aos="flip-right">
-                        <div class="event-icon">
-                            <i class="fa-solid fa-champagne-glasses"></i>
-                        </div>
-                        <h3 class="event-title">Resepsi</h3>
-                        <p class="event-details"><i class="fa-solid fa-calendar-days mr-2"></i> Sabtu, 15 Juni 2024</p>
-                        <p class="event-details"><i class="fa-solid fa-clock mr-2"></i> 11.00 - 14.00 WIB</p>
-                        <p class="event-details"><i class="fa-solid fa-location-dot mr-2"></i> Ballroom Hotel Grand Palace</p>
-                        <p class="event-details">Jl. Gatot Subroto No. 456, Medan</p>
-                    </div>
+
+            <!-- (DIUBAH) Resepsi Card - Desain baru -->
+            <div class="bg-white shadow-xl rounded-2xl p-6 sm:p-8 fade-in">
+                <h3 class="font-playfair text-3xl text-pink-700 text-center">Resepsi</h3>
+                <div class="flex items-center justify-center my-6 text-pink-800">
+                    <!-- Icon Kalender -->
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <p class="text-lg">Kamis, 15 Januari 2026</p>
                 </div>
+                 <div class="flex items-center justify-center mb-6 text-pink-800">
+                    <!-- Icon Jam -->
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p class="text-lg">Pukul 10.00 WIB - Selesai</p>
+                </div>
+                <p class="text-center text-gray-700 font-semibold text-lg">Lapangan SMK 1 Padangsidimpuan</p>
+                <p class="text-center text-gray-600 text-sm mt-1">Jl. Perintis Kemerdekaan, Padangsidimpuan</p>
+
+                <!-- Peta Mini -->
+                <div class="rounded-lg overflow-hidden mt-6 shadow-md border border-gray-200">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.95671569435!2d99.268725!3d1.379399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e95690b274c3d%3A0xea835a25f9b3b841!2sSMK%20Negeri%201%20Padangsidimpuan!5e0!3m2!1sen!2sid!4v1678888999999" 
+                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://maps.app.goo.gl/gN9H3qK3J3H1u4y1A" target="_blank" class="block w-full text-center bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold py-3 px-6 rounded-lg mt-6 transform hover:scale-105 transition-all duration-300">
+                    Lihat Lokasi di Google Maps
+                </a>
             </div>
+        </section>
+
+        <!-- 6. RSVP (Konfirmasi Kehadiran) -->
+        <section class="py-16 px-6 bg-white shadow-inner-lg fade-in">
+            <h2 class="font-playfair text-4xl text-pink-800 mb-8 text-center">Konfirmasi Kehadiran</h2>
+            <!-- (DIUBAH) Form dibuat menjadi card -->
+            <form id="rsvp-form" class="max-w-md mx-auto bg-white shadow-xl rounded-2xl p-6 sm:p-8">
+                <div class="mb-4">
+                    <label for="rsvp-name" class="block text-gray-700 mb-2">Nama Anda</label>
+                    <input type="text" id="rsvp-name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300" placeholder="Tulis nama Anda" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Konfirmasi</label>
+                    <select id="rsvp-status" name="status" class="w-full px-4 py-2 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-pink-300" required>
+                        <option value="" disabled selected>Pilih...</option>
+                        <option value="Hadir">Hadir</option>
+                        <option value="Tidak Hadir">Tidak Hadir</option>
+                    </select>
+                </div>
+                <div class="mb-6" id="rsvp-count-wrapper" style="display: none;">
+                    <label for="rsvp-count" class="block text-gray-700 mb-2">Jumlah Tamu (termasuk Anda)</label>
+                    <input type="number" id="rsvp-count" name="count" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300" value="1" min="1">
+                </div>
+                <button type="submit" id="rsvp-submit" class="w-full bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold py-3 px-6 rounded-lg transform hover:scale-105 transition-all duration-300">
+                    Kirim Konfirmasi
+                </button>
+                <p id="rsvp-message" class="text-center mt-4"></p>
+            </form>
+        </section>
+
+        <!-- 7. Buku Tamu Digital (Ucapan & Doa) -->
+        <section class="py-16 px-6 fade-in">
+            <h2 class="font-playfair text-4xl text-pink-800 mb-8 text-center">Buku Tamu</h2>
+            <!-- (DIUBAH) Form card styling -->
+            <form id="guestbook-form" class="max-w-md mx-auto bg-white shadow-xl rounded-2xl p-6 sm:p-8">
+                <div class="mb-4">
+                    <label for="guestbook-name" class="block text-gray-700 mb-2">Nama Anda</label>
+                    <input type="text" id="guestbook-name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300" placeholder="Tulis nama Anda" required>
+                </div>
+                <div class="mb-6">
+                    <label for="guestbook-message" class="block text-gray-700 mb-2">Ucapan & Doa</label>
+                    <textarea id="guestbook-message" name="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300" placeholder="Tulis ucapan dan doa Anda..." required></textarea>
+                </div>
+                <button type="submit" id="guestbook-submit" class="w-full bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold py-3 px-6 rounded-lg transform hover:scale-105 transition-all duration-300">
+                    Kirim Ucapan
+                </button>
+                <p id="guestbook-message-response" class="text-center mt-4"></p>
+            </form>
             
-            <!-- Countdown Section -->
-            <div class="section-card" data-aos="fade-up">
-                <h2 class="section-title font-script">Hitung Mundur</h2>
-                
-                <div class="countdown-container" id="countdown">
-                    <div class="countdown-item">
-                        <div class="countdown-value" id="days">00</div>
-                        <div class="countdown-label">Hari</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-value" id="hours">00</div>
-                        <div class="countdown-label">Jam</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-value" id="minutes">00</div>
-                        <div class="countdown-label">Menit</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-value" id="seconds">00</div>
-                        <div class="countdown-label">Detik</div>
-                    </div>
-                </div>
-                
-                <!-- Counter Hitung Hari -->
-                <div class="mt-8 pt-6 border-t border-gray-200" data-aos="fade-up">
-                    <h3 class="text-center text-xl mb-4" style="color: var(--primary-pink);">Hitung Hari Menuju Pernikahan</h3>
-                    <div class="text-center text-4xl font-bold" id="days-counter" style="color: var(--gold);">0</div>
-                    <p class="text-center mt-2">Hari</p>
-                </div>
+            <div id="guestbook-display" class="max-w-md mx-auto mt-8">
+                <!-- Ucapan yang masuk bisa ditampilkan di sini -->
             </div>
+        </section>
+        
+        <!-- 8. Angpao Cashless / E-Gift -->
+        <section class="py-16 px-6 bg-white shadow-inner-lg fade-in">
+            <!-- Pemisah Bagian -->
+            <p class="font-playfair text-3xl text-pink-300 mb-10 fade-in text-center">~ 🎁 ~</p>
             
-            <!-- RSVP Section -->
-            <div class="section-card" data-aos="fade-up">
-                <h2 class="section-title font-script">Konfirmasi Kehadiran</h2>
-                
-                <div class="rsvp-form">
-                    <form id="rsvp-form">
-                        <div class="form-group">
-                            <label class="form-label">Nama Lengkap *</label>
-                            <input type="text" class="form-input" id="guest-name" placeholder="Masukkan nama lengkap" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Jumlah Kehadiran *</label>
-                            <select class="form-select" id="guest-count" required>
-                                <option value="" disabled selected>Pilih jumlah kehadiran</option>
-                                <option value="1">1 Orang</option>
-                                <option value="2">2 Orang</option>
-                                <option value="3">3 Orang</option>
-                                <option value="4">4 Orang</option>
-                                <option value="5">5 Orang atau lebih</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Konfirmasi Kehadiran *</label>
-                            <select class="form-select" id="attendance-status" required>
-                                <option value="" disabled selected>Konfirmasi kehadiran Anda</option>
-                                <option value="hadir">Hadir</option>
-                                <option value="tidak-hadir">Tidak Hadir</option>
-                                <option value="ragu-ragu">Masih Ragu-Ragu</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Ucapan & Doa</label>
-                            <textarea class="form-textarea" id="guest-message" rows="4" placeholder="Tuliskan ucapan dan doa untuk mempelai..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">
-                            <i class="fa-solid fa-paper-plane mr-2"></i> Kirim Konfirmasi
-                        </button>
-                    </form>
-                </div>
-            </div>
+            <h2 class="font-playfair text-4xl text-pink-800 mb-8 text-center">Kirim Hadiah</h2>
+            <p class="text-center text-gray-600 max-w-lg mx-auto mb-10">
+                Doa restu Anda adalah hadiah terindah bagi kami. Namun, jika Anda ingin memberikan tanda kasih, Anda dapat melakukannya secara non-tunai melalui:
+            </p>
             
-            <!-- Attendance List Section -->
-            <div class="section-card" data-aos="fade-up">
-                <h2 class="section-title font-script">Daftar Konfirmasi</h2>
-                
-                <div class="attendance-container">
-                    <div class="attendance-list" id="attendance-list">
-                        <!-- Daftar konfirmasi akan dimuat di sini -->
-                        <div class="text-center py-4 text-gray-500">Belum ada konfirmasi kehadiran</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Gift Section -->
-            <div class="section-card" data-aos="fade-up">
-                <h2 class="section-title font-script">Kirim Hadiah</h2>
-                
-                <div class="gift-container">
-                    <p class="text-center mb-6">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan tanda kasih, Anda dapat melakukannya melalui:</p>
-                    
-                    <div class="qris-code">
-                        <!-- Ganti dengan QRIS yang sesuai -->
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://example.com" alt="QR Code">
-                    </div>
-                    
-                    <div class="bank-info">
-                        <h3 class="text-center mb-4" style="color: var(--primary-pink);">Transfer Bank</h3>
-                        
-                        <div class="bank-item">
-                            <span>Bank BCA</span>
-                            <span>1234567890</span>
-                        </div>
-                        <div class="bank-item">
-                            <span>a.n.</span>
-                            <span>Rizki Doli Harahap</span>
-                        </div>
-                        
-                        <div class="bank-item mt-4">
-                            <span>Bank Mandiri</span>
-                            <span>0987654321</span>
-                        </div>
-                        <div class="bank-item">
-                            <span>a.n.</span>
-                            <span>Sri Raudhoh Ikky Mr Ritonga</span>
-                        </div>
-                    </div>
-                    
-                    <button class="whatsapp-btn" id="whatsapp-confirm">
-                        <i class="fa-brands fa-whatsapp mr-2"></i> Konfirmasi via WhatsApp
+            <div class="max-w-md mx-auto">
+                <!-- (DIUBAH) Tab Buttons - Desain baru -->
+                <div class="flex rounded-lg shadow-sm border border-pink-200 mb-6">
+                    <button class="tab-btn active w-1/2 py-3 rounded-l-lg font-semibold" data-tab="bank">
+                        Transfer Bank
+                    </button>
+                    <button class="tab-btn w-1/2 py-3 rounded-r-lg font-semibold" data-tab="ewallet">
+                        E-Wallet
                     </button>
                 </div>
-            </div>
-            
-            <!-- Location Section -->
-            <div class="section-card" data-aos="fade-up">
-                <h2 class="section-title font-script">Lokasi Acara</h2>
                 
-                <div class="event-container">
-                    <div class="event-card">
-                        <div class="event-icon">
-                            <i class="fa-solid fa-mosque"></i>
-                        </div>
-                        <h3 class="event-title">Akad Nikah</h3>
-                        <p class="event-details">Masjid Al-Mubarak</p>
-                        <p class="event-details">Jl. Merdeka No. 123, Medan</p>
-                        <div class="mt-4">
-                            <a href="https://maps.google.com/?q=Masjid+Al-Mubarak+Medan" target="_blank" class="submit-btn" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">
-                                <i class="fa-solid fa-map-location-dot mr-2"></i> Buka di Google Maps
-                            </a>
-                        </div>
+                <!-- (DIUBAH) Tab Content - Desain card baru -->
+                <div id="tab-bank" class="tab-content active">
+                    <div class="bg-white shadow-md rounded-lg p-6 text-center mb-4">
+                        <img src="https://placehold.co/100x30/fff/ccc?text=Logo+Bank+BCA" alt="[Logo Bank BCA]" class="h-8 mx-auto mb-3">
+                        <p class="text-gray-700">Bank Central Asia (BCA)</p>
+                        <p class="text-xl font-bold text-pink-800 my-2">1234567890</p>
+                        <p class="text-gray-700">a.n. Rizky Doli</p>
+                        <button class="copy-btn mt-3 text-sm bg-pink-100 text-pink-700 py-1 px-3 rounded-full hover:bg-pink-200 transition-colors" data-text="1234567890">Salin No. Rek</button>
                     </div>
-                    
-                    <div class="event-card">
-                        <div class="event-icon">
-                            <i class="fa-solid fa-champagne-glasses"></i>
-                        </div>
-                        <h3 class="event-title">Resepsi</h3>
-                        <p class="event-details">Ballroom Hotel Grand Palace</p>
-                        <p class="event-details">Jl. Gatot Subroto No. 456, Medan</p>
-                        <div class="mt-4">
-                            <a href="https://maps.google.com/?q=Hotel+Grand+Palace+Medan" target="_blank" class="submit-btn" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">
-                                <i class="fa-solid fa-map-location-dot mr-2"></i> Buka di Google Maps
-                            </a>
-                        </div>
+                     <div class="bg-white shadow-md rounded-lg p-6 text-center">
+                        <img src="https://placehold.co/100x30/fff/ccc?text=Logo+Bank+Mandiri" alt="[Logo Bank Mandiri]" class="h-8 mx-auto mb-3">
+                        <p class="text-gray-700">Bank Mandiri</p>
+                        <p class="text-xl font-bold text-pink-800 my-2">0987654321</p>
+                        <p class="text-gray-700">a.n. Sri Raudoh</p>
+                        <button class="copy-btn mt-3 text-sm bg-pink-100 text-pink-700 py-1 px-3 rounded-full hover:bg-pink-200 transition-colors" data-text="0987654321">Salin No. Rek</button>
+                    </div>
+                </div>
+                
+                <div id="tab-ewallet" class="tab-content">
+                    <div class="bg-white shadow-md rounded-lg p-6 text-center mb-4">
+                        <img src="https://placehold.co/100x30/fff/ccc?text=Logo+GOPAY" alt="[Logo GOPAY]" class="h-8 mx-auto mb-3">
+                        <p class="text-gray-700">GOPAY</p>
+                        <p class="text-xl font-bold text-blue-800 my-2">08123456789</p>
+                        <p class="text-gray-700">a.n. Rizky Doli</p>
+                        <button class="copy-btn mt-3 text-sm bg-blue-100 text-blue-700 py-1 px-3 rounded-full hover:bg-blue-200 transition-colors" data-text="08123456789">Salin No.</button>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6 text-center">
+                        <img src="https://placehold.co/100x30/fff/ccc?text=Logo+OVO" alt="[Logo OVO]" class="h-8 mx-auto mb-3">
+                        <p class="text-gray-700">OVO</p>
+                        <p class="text-xl font-bold text-purple-800 my-2">08987654321</p>
+                        <p class="text-gray-700">a.n. Sri Raudoh</p>
+                        <button class="copy-btn mt-3 text-sm bg-purple-100 text-purple-700 py-1 px-3 rounded-full hover:bg-purple-200 transition-colors" data-text="08987654321">Salin No.</button>
                     </div>
                 </div>
             </div>
-        </div>
+            
+            <!-- (DIUBAH) Gift Registry Card - Desain baru -->
+            <div class="max-w-md mx-auto mt-8 text-center p-6 bg-white shadow-xl rounded-2xl">
+                 <h3 class="font-playfair text-2xl text-pink-800 mb-4">Daftar Hadiah</h3>
+                 <p class="text-gray-600 mb-4">
+                     Kami juga telah menyusun daftar hadiah. Anda dapat melihatnya melalui tautan di bawah ini:
+                 </p>
+                 <a href="#" target="_blank" class="inline-block bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-lg hover:bg-gray-300 transition-colors">
+                    Lihat Daftar Hadiah
+                 </a>
+                 <p class="text-xs text-gray-500 mt-3">(Tautkan ke layanan gift registry Anda)</p>
+            </div>
+        </section>
         
         <!-- Footer -->
-        <div class="footer">
-            <h2 class="footer-title font-script">Terima Kasih</h2>
-            <p class="footer-text">
-                Atas kehadiran, doa, dan restu yang diberikan, kami mengucapkan terima kasih yang sebesar-besarnya. Semoga Allah SWT membalas semua kebaikan Bapak/Ibu/Saudara/i sekalian.
+        <footer class="py-16 px-6 text-center">
+            <p class="text-gray-600 mb-6 max-w-lg mx-auto fade-in">
+                Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
             </p>
-            <p class="signature font-script">Rizki & Sri</p>
-        </div>
+            <h2 class="font-great-vibes text-6xl text-pink-800 mb-2 fade-in">Terima Kasih</h2>
+            <h3 class="font-playfair text-3xl text-pink-700 fade-in">Rizky & Sri</h3>
+        </footer>
+        
     </main>
     
-    <!-- AOS Script -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script>
-        // Inisialisasi AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+        // --- KONFIGURASI PENTING ---
+        // Ganti dengan URL Web App Google Apps Script Anda yang sudah di-deploy
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx2NnmkvSlGrqkPIGpbOkoK7sQDIRGLxIAudtlq8e_fCuk9UFavs2Z8KGSXkpyyQiQm/exec"; 
         
-        // Data untuk acara (sesuaikan dengan tanggal acara Anda)
-        const weddingDate = new Date('June 15, 2024 08:00:00').getTime();
+        // Target Tanggal Countdown (Tahun, Bulan (0-11), Hari, Jam, Menit, Detik)
+        // 31 Desember 2025, jam 8:00 pagi
+        const COUNTDOWN_TARGET = new Date(2025, 11, 31, 8, 0, 0); 
+        // -----------------------------
         
-        // Variabel untuk melacak status musik
-        let isMusicPlaying = false;
-        let musicInitialized = false;
-        
-        // Fungsi untuk membuat animasi bintang
-        function createStars() {
-            const starContainer = document.getElementById('star-container');
-            const starCount = 100;
+        document.addEventListener('DOMContentLoaded', () => {
             
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                
-                // Ukuran acak
-                const size = Math.random() * 3 + 1;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                
-                // Posisi acak
-                star.style.top = `${Math.random() * 100}%`;
-                star.style.left = `${Math.random() * 100}%`;
-                
-                // Durasi dan delay animasi acak
-                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                star.style.animationDelay = `${Math.random() * 5}s`;
-                
-                starContainer.appendChild(star);
-            }
-        }
-        
-        // Fungsi untuk membuat bunga sakura
-        function createSakura() {
-            const sakuraContainer = document.getElementById('sakura-container');
-            
-            function createOneSakura() {
-                const sakura = document.createElement('div');
-                sakura.classList.add('sakura');
-                
-                // Posisi horizontal acak
-                sakura.style.left = `${Math.random() * 100}%`;
-                
-                // Ukuran acak
-                const size = Math.random() * 15 + 10;
-                sakura.style.width = `${size}px`;
-                sakura.style.height = `${size}px`;
-                
-                // Durasi animasi acak
-                const duration = Math.random() * 10 + 10;
-                sakura.style.animationDuration = `${duration}s`;
-                
-                // Delay animasi acak
-                sakura.style.animationDelay = `${Math.random() * 5}s`;
-                
-                sakuraContainer.appendChild(sakura);
-                
-                // Hapus elemen setelah animasi selesai
-                setTimeout(() => {
-                    sakura.remove();
-                }, duration * 1000);
-            }
-            
-            // Buat sakura secara berkala
-            setInterval(createOneSakura, 500);
-            
-            // Buat beberapa sakura di awal
-            for (let i = 0; i < 15; i++) {
-                setTimeout(createOneSakura, i * 300);
-            }
-        }
-        
-        // Fungsi untuk membuat daun
-        function createLeaves() {
-            const leafContainer = document.getElementById('leaf-container');
-            
-            function createOneLeaf() {
-                const leaf = document.createElement('div');
-                leaf.classList.add('leaf');
-                
-                // Posisi horizontal acak
-                leaf.style.left = `${Math.random() * 100}%`;
-                
-                // Ukuran acak
-                const size = Math.random() * 15 + 10;
-                leaf.style.width = `${size}px`;
-                leaf.style.height = `${size}px`;
-                
-                // Durasi animasi acak
-                const duration = Math.random() * 15 + 10;
-                leaf.style.animationDuration = `${duration}s`;
-                
-                // Delay animasi acak
-                leaf.style.animationDelay = `${Math.random() * 5}s`;
-                
-                leafContainer.appendChild(leaf);
-                
-                // Hapus elemen setelah animasi selesai
-                setTimeout(() => {
-                    leaf.remove();
-                }, duration * 1000);
-            }
-            
-            // Buat daun secara berkala
-            setInterval(createOneLeaf, 800);
-            
-            // Buat beberapa daun di awal
-            for (let i = 0; i < 10; i++) {
-                setTimeout(createOneLeaf, i * 500);
-            }
-        }
-        
-        // Fungsi untuk membuat elemen floating
-        function createFloatingElements() {
-            const coverBg = document.getElementById('cover-bg');
-            
-            for (let i = 0; i < 15; i++) {
-                const element = document.createElement('div');
-                element.classList.add('floating-element');
-                
-                // Ukuran acak
-                const size = Math.random() * 100 + 50;
-                element.style.width = `${size}px`;
-                element.style.height = `${size}px`;
-                
-                // Posisi acak
-                element.style.left = `${Math.random() * 100}%`;
-                element.style.top = `${Math.random() * 100}%`;
-                
-                // Delay animasi acak
-                element.style.animationDelay = `${Math.random() * 20}s`;
-                
-                // Durasi animasi acak
-                element.style.animationDuration = `${Math.random() * 10 + 15}s`;
-                
-                coverBg.appendChild(element);
-            }
-        }
-        
-        // Fungsi untuk membuat blink effect
-        function createBlinkEffects() {
-            const blinkContainer = document.getElementById('blink-container');
-            
-            function createOneBlink() {
-                const blink = document.createElement('div');
-                blink.classList.add('blink');
-                
-                // Posisi acak
-                blink.style.left = `${Math.random() * 100}%`;
-                blink.style.top = `${Math.random() * 100}%`;
-                
-                // Ukuran acak
-                const size = Math.random() * 100 + 50;
-                blink.style.width = `${size}px`;
-                blink.style.height = `${size}px`;
-                
-                // Delay animasi acak
-                blink.style.animationDelay = `${Math.random() * 4}s`;
-                
-                blinkContainer.appendChild(blink);
-                
-                // Hapus elemen setelah animasi selesai
-                setTimeout(() => {
-                    blink.remove();
-                }, 4000);
-            }
-            
-            // Buat blink secara berkala
-            setInterval(createOneBlink, 1000);
-            
-            // Buat beberapa blink di awal
-            for (let i = 0; i < 5; i++) {
-                setTimeout(createOneBlink, i * 500);
-            }
-        }
-        
-        // Fungsi untuk mengambil parameter dari URL
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-        
-        // Fungsi untuk mengatur nama tamu dari URL
-        function setGuestNameFromUrl() {
-            const guestName = getUrlParameter('nama') || getUrlParameter('to') || 'Tamu Undangan';
-            document.getElementById('guest-name-display').textContent = guestName;
-            document.getElementById('guest-name').value = guestName;
-        }
-        
-        // Fungsi untuk countdown
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-            
-            // Hitung hari, jam, menit, detik
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            // Update elemen countdown
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            
-            // Update counter hitung hari
-            document.getElementById('days-counter').textContent = days;
-            
-            // Jika countdown selesai
-            if (distance < 0) {
-                clearInterval(countdownInterval);
-                document.getElementById('countdown').innerHTML = '<div class="text-center text-2xl" style="color: var(--primary-pink);">Acara Telah Berlangsung!</div>';
-                document.getElementById('days-counter').textContent = '0';
-            }
-        }
-        
-        // Fungsi untuk memutar musik
-        function playMusic() {
-            const bgMusic = document.getElementById('bg-music');
-            const musicIcon = document.getElementById('music-icon');
-            
-            if (!musicInitialized) {
-                // Set volume
-                bgMusic.volume = 0.5;
-                
-                // Coba putar musik
-                const playPromise = bgMusic.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        // Musik berhasil diputar
-                        isMusicPlaying = true;
-                        musicInitialized = true;
-                        musicIcon.classList.remove('fa-play');
-                        musicIcon.classList.add('fa-pause');
-                        console.log("Musik berhasil diputar");
-                    }).catch(error => {
-                        // Autoplay mungkin diblokir
-                        console.log("Autoplay diblokir:", error);
-                        musicIcon.classList.remove('fa-pause');
-                        musicIcon.classList.add('fa-play');
-                    });
-                }
-            }
-        }
-        
-        // Fungsi untuk membuka undangan
-        function openInvitation() {
+            // === 1. Personalisasi Undangan ===
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestName = urlParams.get('to') || 'Tamu Undangan';
+            document.getElementById('guest-name').innerText = guestName.replace(/_/g, ' ');
+            // Juga isi nama di form RSVP
+            document.getElementById('rsvp-name').value = guestName.replace(/_/g, ' ');
+            document.getElementById('guestbook-name').value = guestName.replace(/_/g, ' ');
+
+            // === 2. Animasi Pembuka (Cover) ===
             const cover = document.getElementById('cover');
             const mainContent = document.getElementById('main-content');
-            const scrollIndicator = document.getElementById('scroll-indicator');
-            
-            // Putar musik saat tombol diklik
-            playMusic();
-            
-            // Animasi menutup cover
-            cover.style.transform = 'translateY(-100%)';
-            cover.style.opacity = '0';
-            
-            // Tampilkan konten utama
-            setTimeout(() => {
-                mainContent.style.opacity = '1';
-                cover.style.display = 'none';
-                scrollIndicator.style.display = 'block';
+            const openButton = document.getElementById('open-invitation');
+
+            openButton.addEventListener('click', () => {
+                cover.classList.add('hidden');
+                mainContent.classList.remove('hidden');
+                setTimeout(() => mainContent.style.opacity = '1', 10);
                 
-                // Refresh AOS setelah konten ditampilkan
-                AOS.refresh();
-            }, 1000);
-        }
-        
-        // Fungsi untuk toggle musik
-        function toggleMusic() {
-            const bgMusic = document.getElementById('bg-music');
-            const musicIcon = document.getElementById('music-icon');
-            
-            if (!musicInitialized) {
+                // Mulai musik
                 playMusic();
-                return;
-            }
-            
-            if (isMusicPlaying) {
-                bgMusic.pause();
-                musicIcon.classList.remove('fa-pause');
-                musicIcon.classList.add('fa-play');
-            } else {
-                bgMusic.play();
-                musicIcon.classList.remove('fa-play');
-                musicIcon.classList.add('fa-pause');
-            }
-            isMusicPlaying = !isMusicPlaying;
-        }
-        
-        // Fungsi untuk menangani form RSVP
-        function handleRsvpForm(event) {
-            event.preventDefault();
-            
-            const guestName = document.getElementById('guest-name').value;
-            const guestCount = document.getElementById('guest-count').value;
-            const attendanceStatus = document.getElementById('attendance-status').value;
-            const guestMessage = document.getElementById('guest-message').value;
-            
-            // Simpan data ke localStorage (bisa diganti dengan pengiriman ke server)
-            const rsvpData = {
-                name: guestName,
-                count: guestCount,
-                status: attendanceStatus,
-                message: guestMessage,
-                timestamp: new Date().toLocaleString()
-            };
-            
-            // Ambil data yang sudah ada
-            let existingData = JSON.parse(localStorage.getItem('weddingRsvp')) || [];
-            existingData.push(rsvpData);
-            
-            // Simpan kembali
-            localStorage.setItem('weddingRsvp', JSON.stringify(existingData));
-            
-            // Update daftar kehadiran
-            updateAttendanceList();
-            
-            // Tampilkan notifikasi
-            alert('Terima kasih! Konfirmasi kehadiran Anda telah berhasil dikirim.');
-            
-            // Reset form
-            document.getElementById('rsvp-form').reset();
-            document.getElementById('guest-name').value = document.getElementById('guest-name-display').textContent;
-            
-            // Kirim konfirmasi ke WhatsApp (opsional)
-            sendWhatsAppConfirmation(rsvpData);
-        }
-        
-        // Fungsi untuk mengirim konfirmasi ke WhatsApp
-        function sendWhatsAppConfirmation(rsvpData) {
-            const phoneNumber = "6282273902728"; // Ganti dengan nomor WhatsApp tujuan
-            const message = `Halo, saya ${rsvpData.name} ingin mengkonfirmasi kehadiran untuk acara pernikahan Rizki & Sri. Saya akan ${rsvpData.status === 'hadir' ? 'hadir' : 'tidak hadir'} dengan ${rsvpData.count} orang. ${rsvpData.message ? `Pesan: ${rsvpData.message}` : ''}`;
-            
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            
-            // Buka jendela baru untuk WhatsApp
-            window.open(whatsappUrl, '_blank');
-        }
-        
-        // Fungsi untuk memperbarui daftar kehadiran
-        function updateAttendanceList() {
-            const attendanceList = document.getElementById('attendance-list');
-            const rsvpData = JSON.parse(localStorage.getItem('weddingRsvp')) || [];
-            
-            if (rsvpData.length === 0) {
-                attendanceList.innerHTML = '<div class="text-center py-4 text-gray-500">Belum ada konfirmasi kehadiran</div>';
-                return;
-            }
-            
-            // Urutkan berdasarkan waktu terbaru
-            rsvpData.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-            
-            let html = '';
-            rsvpData.forEach(item => {
-                const statusClass = item.status === 'hadir' ? 'status-present' : 
-                                  item.status === 'tidak-hadir' ? 'status-absent' : 'status-absent';
-                const statusText = item.status === 'hadir' ? 'Hadir' : 
-                                 item.status === 'tidak-hadir' ? 'Tidak Hadir' : 'Ragu-Ragu';
                 
-                html += `
-                    <div class="attendance-item">
-                        <div class="guest-info">
-                            <div class="guest-name">${item.name}</div>
-                            <div class="guest-message">${item.message || 'Tidak ada pesan'}</div>
-                        </div>
-                        <div class="attendance-status ${statusClass}">${statusText}</div>
-                    </div>
-                `;
+                // Scroll ke atas
+                window.scrollTo(0, 0);
+            });
+
+            // === 3. Background Music (Tone.js) ===
+            let musicPlaying = false;
+            let synth, seq;
+            const musicOnIcon = document.getElementById('music-on-icon');
+            const musicOffIcon = document.getElementById('music-off-icon');
+            const musicToggle = document.getElementById('music-toggle');
+
+            function initializeMusic() {
+                // Melodi romantis sederhana (Pachelbel's Canon-like progression)
+                synth = new Tone.PolySynth(Tone.Synth, {
+                    oscillator: { type: "fatsawtooth" },
+                    envelope: { attack: 0.1, decay: 0.1, sustain: 0.3, release: 1 },
+                    volume: -12 // Turunkan volume
+                }).toDestination();
+
+                const melody = [
+                    ['C4', 'E4', 'G4'], null, ['G3', 'B3', 'D4'], null,
+                    ['A3', 'C4', 'E4'], null, ['E3', 'G3', 'B3'], null,
+                    ['F3', 'A3', 'C4'], null, ['C3', 'E3', 'G3'], null,
+                    ['F3', 'A3', 'C4'], null, ['G3', 'B3', 'D4'], null,
+                ];
+
+                seq = new Tone.Sequence((time, notes) => {
+                    if (notes) {
+                        synth.triggerAttackRelease(notes, "4n", time);
+                    }
+                }, melody, "4n").start(0);
+                
+                Tone.Transport.bpm.value = 70;
+            }
+
+            async function playMusic() {
+                if (!musicPlaying) {
+                    await Tone.start();
+                    if (!seq) initializeMusic();
+                    Tone.Transport.start();
+                    musicPlaying = true;
+                    musicOnIcon.classList.remove('hidden');
+                    musicOffIcon.classList.add('hidden');
+                }
+            }
+
+            function stopMusic() {
+                if (musicPlaying) {
+                    Tone.Transport.stop();
+                    musicPlaying = false;
+                    musicOnIcon.classList.add('hidden');
+                    musicOffIcon.classList.remove('hidden');
+                }
+            }
+
+            musicToggle.addEventListener('click', () => {
+                musicPlaying ? stopMusic() : playMusic();
+            });
+
+            // === 4. Countdown Timer ===
+            const countdownElements = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds')
+            };
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = COUNTDOWN_TARGET.getTime() - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    Object.values(countdownElements).forEach(el => el.innerText = '00');
+                    return;
+                }
+
+                const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownElements.days.innerText = d.toString().padStart(2, '0');
+                countdownElements.hours.innerText = h.toString().padStart(2, '0');
+                countdownElements.minutes.innerText = m.toString().padStart(2, '0');
+                countdownElements.seconds.innerText = s.toString().padStart(2, '0');
+            }
+            const countdownInterval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+
+            // === 5. Animasi Kelopak Bunga & Kilau ===
+            const petalContainer = document.getElementById('petal-container');
+            // (DIUBAH) Menambahkan kilau '✨', '💎', '🌟'
+            const petals = ['🌸', '🌺', '✨', '💖', '💮', '❀', '💎', '🌟'];
+            
+            function createPetal() {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                petal.innerText = petals[Math.floor(Math.random() * petals.length)];
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.animationDuration = `${Math.random() * 5 + 10}s`; // Durasi 10-15 detik
+                petal.style.animationDelay = `${Math.random() * 5}s`;
+                petal.style.fontSize = `${Math.random() * 10 + 10}px`;
+                petal.style.opacity = Math.random() * 0.5 + 0.3;
+                petalContainer.appendChild(petal);
+                
+                // Hapus kelopak after selesai animasi
+                setTimeout(() => {
+                    petal.remove();
+                }, 15000);
+            }
+            // Buat beberapa kelopak setiap beberapa saat
+            setInterval(createPetal, 500);
+
+            // === 6. Animasi Fade-in on Scroll ===
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+            const appearOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+
+            // === 7. Logika Formulir (RSVP & Guestbook) ===
+            const rsvpForm = document.getElementById('rsvp-form');
+            const rsvpStatus = document.getElementById('rsvp-status');
+            const rsvpCountWrapper = document.getElementById('rsvp-count-wrapper');
+            const rsvpSubmitBtn = document.getElementById('rsvp-submit');
+            const rsvpMessageEl = document.getElementById('rsvp-message');
+            
+            // Tampilkan/sembunyikan jumlah tamu berdasarkan pilihan
+            rsvpStatus.addEventListener('change', (e) => {
+                rsvpCountWrapper.style.display = e.target.value === 'Hadir' ? 'block' : 'none';
             });
             
-            attendanceList.innerHTML = html;
-        }
-        
-        // Event Listeners
-        document.getElementById('open-button').addEventListener('click', openInvitation);
-        document.getElementById('music-button').addEventListener('click', toggleMusic);
-        document.getElementById('rsvp-form').addEventListener('submit', handleRsvpForm);
-        document.getElementById('whatsapp-confirm').addEventListener('click', function() {
-            const guestName = document.getElementById('guest-name').value || document.getElementById('guest-name-display').textContent;
-            const phoneNumber = "6282273902728"; // Ganti dengan nomor WhatsApp tujuan
-            const message = `Halo, saya ${guestName} ingin mengkonfirmasi kehadiran untuk acara pernikahan Rizki & Sri.`;
+            // Submit RSVP
+            rsvpForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_DEPLOYMENT_URL_HERE") {
+                    rsvpMessageEl.innerText = 'Fitur ini belum diaktifkan. Harap hubungi pengantin.';
+                    rsvpMessageEl.className = 'text-center mt-4 text-red-600';
+                    return;
+                }
+                
+                rsvpSubmitBtn.disabled = true;
+                rsvpSubmitBtn.innerText = 'Mengirim...';
+
+                const formData = new FormData(rsvpForm);
+                const data = Object.fromEntries(formData.entries());
+                data.type = "RSVP"; // Tambahkan tipe untuk identifikasi di Apps Script
+
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Penting untuk Apps Script
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(() => {
+                    rsvpMessageEl.innerText = 'Terima kasih atas konfirmasinya!';
+                    rsvpMessageEl.className = 'text-center mt-4 text-green-600';
+                    rsvpForm.reset();
+                    rsvpCountWrapper.style.display = 'none';
+                })
+                .catch(error => {
+                    rsvpMessageEl.innerText = 'Terjadi kesalahan. Coba lagi nanti.';
+                    rsvpMessageEl.className = 'text-center mt-4 text-red-600';
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    rsvpSubmitBtn.disabled = false;
+                    rsvpSubmitBtn.innerText = 'Kirim Konfirmasi';
+                });
+            });
+
+            // Submit Guestbook
+            const guestbookForm = document.getElementById('guestbook-form');
+            const guestbookSubmitBtn = document.getElementById('guestbook-submit');
+            const guestbookMessageEl = document.getElementById('guestbook-message-response');
             
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        });
-        
-        // Sembunyikan scroll indicator ketika user scroll
-        window.addEventListener('scroll', function() {
-            const scrollIndicator = document.getElementById('scroll-indicator');
-            if (window.scrollY > 100) {
-                scrollIndicator.style.display = 'none';
-            }
-        });
-        
-        // Inisialisasi
-        window.onload = function() {
-            createStars();
-            createSakura();
-            createLeaves();
-            createFloatingElements();
-            createBlinkEffects();
-            setGuestNameFromUrl();
-            updateCountdown();
-            updateAttendanceList();
+            guestbookForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_DEPLOYMENT_URL_HERE") {
+                    guestbookMessageEl.innerText = 'Fitur ini belum diaktifkan.';
+                    guestbookMessageEl.className = 'text-center mt-4 text-red-600';
+                    return;
+                }
+
+                guestbookSubmitBtn.disabled = true;
+                guestbookSubmitBtn.innerText = 'Mengirim...';
+
+                const formData = new FormData(guestbookForm);
+                const data = Object.fromEntries(formData.entries());
+                data.type = "Guestbook"; // Tambahkan tipe
+
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Penting untuk Apps Script
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(() => {
+                    guestbookMessageEl.innerText = 'Terima kasih atas ucapan & doanya!';
+                    guestbookMessageEl.className = 'text-center mt-4 text-green-600';
+                    guestbookForm.reset();
+                })
+                .catch(error => {
+                    guestbookMessageEl.innerText = 'Terjadi kesalahan. Coba lagi nanti.';
+                    guestbookMessageEl.className = 'text-center mt-4 text-red-600';
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    guestbookSubmitBtn.disabled = false;
+                    guestbookSubmitBtn.innerText = 'Kirim Ucapan';
+                });
+            });
             
-            // Update countdown setiap detik
-            const countdownInterval = setInterval(updateCountdown, 1000);
-        };
+            // === 8. Logika Tab Hadiah ===
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.dataset.tab;
+                    
+                    // Update tombol
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Update konten
+                    tabContents.forEach(content => {
+                        content.id === `tab-${tabId}` ? content.classList.add('active') : content.classList.remove('active');
+                    });
+                });
+            });
+            
+            // === 9. Logika Tombol Salin (Copy) ===
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const textToCopy = button.dataset.text;
+                    
+                    // Gunakan document.execCommand untuk kompatibilitas iframe
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    textArea.style.position = 'fixed'; // Hindari scroll jump
+                    textArea.style.left = '-9999px';
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    
+                    try {
+                        document.execCommand('copy');
+                        const originalText = button.innerText;
+                        button.innerText = 'Tersalin!';
+                        setTimeout(() => {
+                            button.innerText = originalText;
+                        }, 1500);
+                    } catch (err) {
+                        console.error('Gagal menyalin:', err);
+                    }
+                    
+                    document.body.removeChild(textArea);
+                });
+            });
+
+        });
     </script>
 </body>
 </html>
